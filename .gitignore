@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+#outputed images
+*.bmp
+*.BMP
