@@ -1,5 +1,4 @@
 #include "bmp_main.hpp"
-
 int main() {
 
     filesystem ::path test_bmp_img = "test_img.bmp";
