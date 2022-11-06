@@ -10,13 +10,13 @@
 *                                 																			*
 *                           	   ~All Rights Reserved 2022/2023 ©~										*
 *************************************************************************************************************/
-
 #include "bmp_main.hpp"
 int main() {
 
-
-
-
-
+bool not_done = 1;
+while(not_done){
+	
+	app_start();
+}
     return 0;
 }
