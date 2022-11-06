@@ -1,11 +1,22 @@
+/************************************************************************************************************
+*                         		 d(Programmer): Omar Rashad salem                                     		*             
+*                                  		Date: 20/10/2022                                                    *    
+*            info:                                                                                          *      
+*                    this is the static chroma .bmp Images project  console version (SCBMP.exe)             *
+*            version :                                                                                      *
+*                    pre_alpha_console_0.1                                                                  *
+*            type :                                                                                         *
+*                    college solo project for 3rd year CS engineering at ksu  -> Multimedia/dr.Heba course  *
+*                                 																			*
+*                           	   ~All Rights Reserved 2022/2023 ©~										*
+*************************************************************************************************************/
+
 #include "bmp_main.hpp"
 int main() {
 
-    filesystem ::path test_bmp_img = "test_img.bmp";
-    ofstream{test_bmp_img};
-    cout << test_bmp_img
-         << " does exisist ? : " << (exists(test_bmp_img) == 1 ? " YES" : " NO")
-         << endl;
+
+
+
 
     return 0;
 }
