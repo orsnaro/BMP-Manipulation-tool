@@ -7,4 +7,4 @@ https://engineering.purdue.edu/ece264/17au/hw/HW15
 https://upload.wikimedia.org/wikipedia/commons/7/75/BMPfileFormat.svg
 
 https://en.wikipedia.org/wiki/List_of_file_signatures
-https://www.geeksforgeeks.org/read-a-record-from-a-file-in-c-using-seekg-and-tellg/
+https://www.geeksforgeeks.org/read-a-record-from-a-file-in-c-using-seekg-and-tellg/ 
