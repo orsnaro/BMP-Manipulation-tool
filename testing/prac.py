@@ -1,14 +1,26 @@
-import cv2; import numpy as np
 
-#BRG
-img = cv2.imread("./colored.jpg",cv2.IMREAD_COLOR)
-cv2.imshow("task1", img)
+# task1
 
-#Blue
-# img = cv2.imread("colored.jpg",cv2.IMREAD_REDUCED_COLOR_2)
-print ( type(img))
+import cv2
+import numpy as np
+# brg
+colored = cv2.imread("colored.jpg", cv2.IMREAD_COLOR)
+cv2.imshow("task1-1", colored)
+# cv2.destroyWindow("task1-1")
+# bgr
+blue = colored.copy()
+blue[:, :, 1] = 0
+blue[:, :, 2] = 0
+cv2.imshow("task1-2", blue)
 
 
-# cv2.imshow("task1 - Blue", img)
+green = colored.copy()
+green[:, :, 0] = 0
+green[:, :, 2] = 0
+cv2.imshow("task1-3", green)
 
-# cv2.waitKey(0)
+red = colored.copy()
+red[:, :, 0] = 0
+red[:, :, ] = 0
+cv2.imshow("task1-4", red)
+cv2.waitKey(0)
