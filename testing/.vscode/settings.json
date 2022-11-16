@@ -7,6 +7,7 @@
         "iomanip": "cpp",
         "iostream": "cpp",
         "bitset": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "filesystem": "cpp"
     }
 }
