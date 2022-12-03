@@ -17,10 +17,10 @@ int main() {
          << endl;
     cin >> path;
 
-    bool fileExist = filesystem ::exists(path);
+    bool fileExist = filesystem :: exists(path);
 
     if (!fileExist) {
-
+        
         cout << ">>there is no image in this name  : \'" << path << "\'" << endl
              << ">>would you like to make new file with name: " << path << '?'
              << endl;
@@ -41,23 +41,28 @@ int main() {
     toFile.open(
         path, ios ::binary |
                   ios ::out); // if file not exist it creates it (re search it)
-
+    if(!toFile){
+        cout << "ERROR OPENING YOUR IMAGE TERMINATING..";
+        return -1
+    }
     cout << ">>Image : "  << path  << " is found!" << endl
-         << ">>begin Importing data proccess ..." << endl;
+        << ">>begin Importing data proccess ..." << endl;
     int x = 0xffffffff;
     // long long int *ptr = &x;
 
     toFile.write((char *)&x, sizeof(x));
-    
+
     if(!toFile.fail())
         cout << "written value: \'" << hex << x << "\' successfully to " << path << endl;
-    else 
+    else {
         cout << "ERROR WRITING TO YOUR IMAGE TERMINATING..";
-        
-    if (fromFile.is_open())
-        fromFile.close();
-    if (toFile.is_open())
-        toFile.close();
+            
+        if (fromFile.is_open())
+            fromFile.close();
+        if (toFile.is_open())
+            toFile.close();
+        return -1;
+    }
     return 0;
 }
 
