@@ -23,3 +23,8 @@ int main() {
 
     return 0;
 }
+
+//TODO : see whats exactly sets photo dimensions ( the header or actual pixels matrix )
+//TODO : try read and write from actual photo and see how it behaves with classes
+//TODO : check manually your whitsh range on pics in test channel on telegram and in file
+//TODO : test seperatly  the background detection code on versy abstract object then amp it up ( try 3 models abstract / mincraft / real photo )
