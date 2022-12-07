@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "limits": "cpp",
+        "climits": "cpp",
+        "algorithm": "cpp"
+    }
+}
