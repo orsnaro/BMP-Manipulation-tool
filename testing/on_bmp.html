@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://engineering.purdue.edu/ece264/17au/hw/HW15 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=720, user-scalable=yes">
+  <link rel="stylesheet" href="./on_bmp_files/main.css">
+  <script src="./on_bmp_files/jquery.min.js.download"></script>
+
+  <title>Advanced C Programming :: HW15</title>
+
+<style>
+s {
+  color: #aaaaaa;
+}
+td > ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.attribution {
+  font-size: 80%;
+  color: #444444;
+}
+table.example_found {
+  margin-left: 3em;
+}
+table.required_files ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 20px;
+}
+table.required_files ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  list-style-type: disc;
+  font-size: 85%;
+  color: #444444;
+}
+</style><style data-rc-order="append" rc-util-key="-ant-1670957964549-0.8887318952855627-dynamic-theme">:root {
+    --ant-primary-color: rgb(255, 81, 0);
+--ant-primary-color-disabled: #ffcda3;
+--ant-primary-color-hover: #ff7429;
+--ant-primary-color-active: #d93d00;
+--ant-primary-color-outline: rgba(255, 81, 0, 0.2);
+--ant-primary-color-deprecated-bg: #fff2e6;
+--ant-primary-color-deprecated-border: #ffb27a;
+--ant-primary-1: #fff2e6;
+--ant-primary-2: #ffcda3;
+--ant-primary-3: #ffb27a;
+--ant-primary-4: #ff9452;
+--ant-primary-5: #ff7429;
+--ant-primary-6: #ff5100;
+--ant-primary-7: #d93d00;
+--ant-primary-8: #b32d00;
+--ant-primary-9: #8c1e00;
+--ant-primary-10: #661300;
+--ant-primary-color-deprecated-l-35: rgb(255, 203, 179);
+--ant-primary-color-deprecated-l-20: rgb(255, 151, 102);
+--ant-primary-color-deprecated-t-20: rgb(255, 116, 51);
+--ant-primary-color-deprecated-t-50: rgb(255, 168, 128);
+--ant-primary-color-deprecated-f-12: rgba(255, 81, 0, 0.12);
+--ant-primary-color-active-deprecated-f-30: rgba(255, 242, 230, 0.3);
+--ant-primary-color-active-deprecated-d-02: rgb(255, 237, 220);
+--ant-success-color: rgb(82, 196, 26);
+--ant-success-color-disabled: #d9f7be;
+--ant-success-color-hover: #73d13d;
+--ant-success-color-active: #389e0d;
+--ant-success-color-outline: rgba(82, 196, 26, 0.2);
+--ant-success-color-deprecated-bg: #f6ffed;
+--ant-success-color-deprecated-border: #b7eb8f;
+--ant-warning-color: rgb(250, 173, 20);
+--ant-warning-color-disabled: #fff1b8;
+--ant-warning-color-hover: #ffc53d;
+--ant-warning-color-active: #d48806;
+--ant-warning-color-outline: rgba(250, 173, 20, 0.2);
+--ant-warning-color-deprecated-bg: #fffbe6;
+--ant-warning-color-deprecated-border: #ffe58f;
+--ant-error-color: rgb(245, 34, 45);
+--ant-error-color-disabled: #ffccc7;
+--ant-error-color-hover: #ff4d4f;
+--ant-error-color-active: #cf1322;
+--ant-error-color-outline: rgba(245, 34, 45, 0.2);
+--ant-error-color-deprecated-bg: #fff1f0;
+--ant-error-color-deprecated-border: #ffa39e;
+  }</style><style>
+  .vt-augment {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .vt-augment.drawer {
+    display: none;
+    width: 700px;
+    background: white;
+    border: 1px solid #e6e6e6;
+    text-align: left;
+    z-index: 102;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    box-shadow: -4px 5px 8px -3px rgba(17, 17, 17, .16);
+    animation: slideToRight 0.5s 1 forwards;
+    transform: translateX(100vw);
+  }
+  .vt-augment.drawer[opened] {
+    display: flex;
+    animation: slideFromRight 0.2s 1 forwards;
+  }
+  .vt-augment > .spinner {
+    position: absolute;
+    z-index: 199;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    border: 8px solid rgba(0, 0, 0, 0.2);
+    border-left-color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.2s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes slideFromRight {
+    0% {
+      transform: translateX(100vw);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideToRight {
+    100% {
+      transform: translateX(100vw);
+      display: none;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .vt-augment.drawer {
+      width: 100%;
+    }
+  }
+</style></head>
+<body class="past_semester ">
+
+  <h1 class="masthead"><a href="https://engineering.purdue.edu/ece264/17au/" data-ur1313m3t="true">Advanced C Programming</a></h1>
+  <h3 class="masthead">
+    Fall 2017 ::
+    ECE 264 ::
+    Purdue University
+  </h3>
+
+  <table id="navbar">
+  <tbody>
+  <tr>
+      <td class="">
+        <a href="https://engineering.purdue.edu/ece264/17au/" data-ur1313m3t="true">Home</a>
+      </td>
+      <td class="">
+        <a href="https://engineering.purdue.edu/ece264/17au/schedule" data-ur1313m3t="true">Schedule</a>
+      </td>
+      <td class="">
+        <a href="https://engineering.purdue.edu/ece264/17au/policies" data-ur1313m3t="true">Syllabus</a>
+      </td>
+      <td class="">
+        <a href="https://engineering.purdue.edu/ece264/17au/resources" data-ur1313m3t="true">Resources</a>
+      </td>
+      <td class="">
+        <a href="https://engineering.purdue.edu/ece264/17au/code_quality" data-ur1313m3t="true">Standards</a>
+      </td>
+      <td class="">
+        <a href="https://engineering.purdue.edu/ece264/17au/scores" data-ur1313m3t="true">Scores</a>
+      </td>
+    <td style="min-width:2em; padding: 0;">
+      <a href="https://piazza.com/class/j6likqvgltq6o2" title="Piazza" target="_blank" data-ur1313m3t="true"><img src="./on_bmp_files/piazza.24x24.png" alt="Piazza" width="24" height="24"></a>
+    </td>
+    <!--
+    <td style="min-width:2em">
+      <a href="https://mycourses.purdue.edu/webapps/blackboard/execute/launcher?type=Course&amp;id=_273224_1&url=" target="_blank"><img src="https://mycourses.purdue.edu/ui/bb-icon2.ico" alt="Blackboard icon" width="24" height="24" style="vertical-align:middle"></a>
+    </td>
+    -->
+  </tr>
+  </tbody>
+  </table>
+
+    <div class="announcement">
+      This is for Fall 2017 (5 years ago) only.
+    </div>
+
+
+
+  <div id="content">
+  <div id="due_date" style="float:right">Due 12/9</div>
+  <h1 id="page_title" class="page_title">Images (A)</h1><div id="contents_container"><div class="contents_first"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#goals" data-ur1313m3t="true">Goals</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#overview" data-ur1313m3t="true">Overview</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#thebmp%20file%20format" data-ur1313m3t="true">The BMP file format</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#examininga%20bmp%20file%20directly" data-ur1313m3t="true">Examining a BMP file directly</a></div><div class="contents_h3"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#big-endianvs.%20little-endian" data-ur1313m3t="true">Big-endian vs. little-endian</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#checkingyour%20understanding" data-ur1313m3t="true">Checking your understanding</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#handlingrun-time%20errors" data-ur1313m3t="true">Handling run-time errors</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#warm-upexercises" data-ur1313m3t="true">Warm-up exercises</a></div><div class="contents_h3"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#optout." data-ur1313m3t="true">Opt out.</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#bmph%20and%20test%20files" data-ur1313m3t="true">bmp.h and test files</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#requirements" data-ur1313m3t="true">Requirements</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#submit" data-ur1313m3t="true">Submit</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#pretester" data-ur1313m3t="true">Pre-tester
+  <span style="color:green">●</span>
+</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#qa" data-ur1313m3t="true">Q&amp;A</a></div><div class="contents_h2"><a href="https://engineering.purdue.edu/ece264/17au/hw/HW15#updates" data-ur1313m3t="true">Updates</a></div></div>
+  <div id="hw_body">
+
+
+  
+
+<h2 id="goals">Goals</h2>
+<div>The goals of this assignment are as follows:
+  <ol>
+    <li>Learn how to program with binary files</li>
+    <li>Practice using structures</li>
+  </ol>
+</div>
+
+
+<!--
+<div class="attribution">
+// Credit:  Prof. Yung-Hsiang Lu and Prof. Cheng-Kok Koh created earlier assignments upon which this one is based.  Text from that assignment has been copied with permission.
+</div>
+-->
+
+<h2 id="overview">Overview</h2>
+
+<p>
+In this exercise, you will write code to read, write, and crop BMP image files.
+</p>
+
+<h2 id="thebmp file format">The BMP file format</h2>
+<p>
+A BMP file has the following format:
+</p>
+
+<table class="light">
+  <tbody>
+    <tr>
+      <td>Header</td>
+      <td>54 bytes</td>
+    </tr>
+    <tr>
+      <td>Palette (optional)</td>
+      <td>0 bytes (for 24-bit RGB images)</td>
+    </tr>
+    <tr>
+      <td>Image Data</td>
+      <td>file size - 54 (for 24-bit RGB images)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  The header has 54 bytes, which are divided into the following fields.  Note
+  that the #pragma directive ensures that the header structure is really
+  54-byte long by using 1-byte alignment.
+</p>
+
+<pre class="code_block">typedef struct {             <span class="comment_compact">// Total: 54 bytes</span>
+  uint16_t  type;             <span class="comment_compact">// Magic identifier: 0x4d42</span>
+  uint32_t  size;             <span class="comment_compact">// File size in bytes</span>
+  uint16_t  reserved1;        <span class="comment_compact">// Not used</span>
+  uint16_t  reserved2;        <span class="comment_compact">// Not used</span>
+  uint32_t  offset;           <span class="comment_compact">// Offset to image data in bytes from beginning of file (54 bytes)</span>
+  uint32_t  dib_header_size;  <span class="comment_compact">// DIB Header size in bytes (40 bytes)</span>
+  int32_t   width_px;         <span class="comment_compact">// Width of the image</span>
+  int32_t   height_px;        <span class="comment_compact">// Height of image</span>
+  uint16_t  num_planes;       <span class="comment_compact">// Number of color planes</span>
+  uint16_t  bits_per_pixel;   <span class="comment_compact">// Bits per pixel</span>
+  uint32_t  compression;      <span class="comment_compact">// Compression type</span>
+  uint32_t  image_size_bytes; <span class="comment_compact">// Image size in bytes</span>
+  int32_t   x_resolution_ppm; <span class="comment_compact">// Pixels per meter</span>
+  int32_t   y_resolution_ppm; <span class="comment_compact">// Pixels per meter</span>
+  uint32_t  num_colors;       <span class="comment_compact">// Number of colors  </span>
+  uint32_t  important_colors; <span class="comment_compact">// Important colors </span>
+} BMPHeader;</pre>
+
+
+<p>Note that the number of bytes each field occupies can be obtained by
+dividing the number 16 or 32 by 8.  For example, the field "type" occupies
+2 bytes.  These fields are all integers.  An "uint" means unsigned,
+and "int" means signed.  For example the fields "width" and "height" are
+signed integers.  However, for simplicity, all the BMP files we have
+will contain only positive integers.  You may assume that in your code.
+Also, we are dealing wih uncompressed BMP format (compression field is 0).
+</p>
+
+<p>Because of the packing specified in the bmp.h file, you should be
+able to use fread to read in the first 54 bytes of a BMP file and 
+store 54 bytes in a BMPHeader structure.
+</p>
+
+<p>Among all these fields in the BMPHeader structure, you have to pay attention 
+to the following fields:</p>
+
+<table class="light">
+<tbody>
+  <tr><td>bits</td><td>number of bits per pixel</td></tr>
+  <tr><td>width</td><td>number of pixel per row</td></tr>
+  <tr><td>height</td><td>number of rows</td></tr>
+  <tr><td>size</td><td>file size</td></tr>
+  <tr><td>imagesize</td><td>the size of image data (file size - size of header, which is 54)</td></tr>
+</tbody>
+</table>
+
+<p>We will further explain bits, width, height, and imagesize later.  You should 
+use the following structure to store a BMP file, the header for the first 54 
+bytes of a given BMP file, and data should point to a location that is big 
+enough (of imagesize) to store the image data (color information of each 
+pixel).</p>
+
+<pre class="code_block">typedef struct {
+    BMPHeader header;
+    unsigned char* data; 
+} BMPImage;</pre>
+
+<p>Effectively, the BMPImage structure stores the entire BMP file.</p>
+
+<p>Now, let's examine the fields bits, width, height, and imagesize in 
+greater details.  The bits field records the number of bits used to
+represent a pixel.  For this <ins>assignment</ins>
+<del>exercise (and the next exercise and assignment)</del>,
+we are dealing with BMP files with only 24 bits per pixel <del>or 16 bits per pixel</del>.
+For 24-bit representation, 8 bits (1 byte) for <span style="color:red; font-weight: bold;">RED</span>, 8 bits for <span style="color:green; font-weight: bold;">GREEN</span>, and 8 bits
+for <span style="color:blue; font-weight: bold;">BLUE</span>.
+<del>For 16-bit representation, each color is represented using 5 bits
+(the most significant bit is not used).  For this exercise, we will use
+only 24-bit BMP files to test your functions.  However, your code should be 
+able to handle 16-bit format as well.  (Note that the header format is
+actually more complicated for 16-bit format.  However, for this exercise
+and the next exercise and assignment, we will use the same header format
+for both 24-bit and 16-bit BMP files for simplicity.  So yes, we are abusing
+the format!)</del></p>
+
+<aside>In previous semesters, we also used a 16-bit version of the BMP format.
+Since we said we would only test with 24-bit images, 
+the references to 16-bit have been removed from this description.</aside>
+
+<p>The width field gives you the number of pixels per row.  Therefore, the
+total number of bytes required to represent a row of pixel for a 
+24-bit representation is width * 3.  However, the BMP format requires
+each row to be padded at the end such that each row is represented by multiples 
+of 4 bytes of data.  For example, if there is only one pixel in each row,
+we need an additional byte to pad a row.  If there are two pixels per row,
+2 additional bytes.  If there are three pixels per row, 3 additional bytes.
+If there are four pixels per row, we don't have too perform padding.
+We <b>require</b> you to assign value 0 to each of the padding byte.</p>
+
+<p>The height field gives you the number of rows.  Row 0 is the bottom of the
+image.  The file is organized such that the bottom row follows the header,
+and the top row is at the end of the file.  Within each row, the left most
+pixel has a lower index.  Therefore, the first byte in data, i.e., data[0],
+belongs to the bottom left pixel.</p>
+
+<p>The imagesize field is height * amount of data per row.  Note that the 
+amount of date per row includes padding at the end of each row.</p>
+
+<p>You can visualize the one-dimensional data as a three-dimensional array,
+which is organized as rows of pixels, with each pixel represented by 3 bytes
+of colors (24-bit representation) <del>or 2 bytes of colors (16-bit representation)</del>. 
+However, because of padding, you cannot easily typecast the one-dimensional 
+data as a 3-dimensional array.  Instead, you can first typecast it
+as a two dimensional array, rows of pixels.  For each row of data, you 
+can typecast it as a two-dimensional array, where the first dimension 
+captures pixels from left to right, the second dimension is the color 
+of each pixel (3 bytes or 2 bytes).</p>
+
+<p>
+  The <a href="https://en.wikipedia.org/wiki/BMP_file_format" data-ur1313m3t="true">Wikipedia article on the BMP file format</a> has a nice diagram and more complete details about this format.
+</p>
+<h2 id="examininga bmp file directly">Examining a BMP file directly</h2>
+    <p>The best way to inspect binary data is with a hex dump.  From bash, you can type <code>xxd myimage.bmp</code>.  Since it will probably be long, you will want to view in vim.  One way to do that is type <code>xxd myimage.bmp | vim -</code> from bash.  Another way is to open the file in vim and then type <code>:%!xxd</code>.  (Do not save!)</p>
+    <p>
+      Suppose you have the following tiny 6x6 BMP image:  <img width="6" alt="" height="6" src="./on_bmp_files/6x6_24bit.bmp">.  (Yes, it really is only 6 pixels by 6 pixels.  Don't worry.  A larger version is included in one of the diagrams below.)
+    </p>
+    <p>
+    To get a hex dump right on the command line, you could type this at bash:
+    </p>
+    <pre class="code_block"><span style="color:#aaaaaa">$</span> xxd 6x6_24bit.bmp</pre>
+    <p>
+    It will be more convenient to view in vim, so we type this from bash instead.  (Don't forget the "-" at the end!)
+    </p>
+    <pre class="code_block"><span style="color:#aaaaaa">$</span> xxd 6x6_24bit.bmp | vim -</pre>
+    <p>
+    Here is the hex dump, a you will see it.  Don't worry if this looks cryptic.  Read on and you will understand it completely.
+    </p>
+    <div>
+    <img width="887" alt="" height="332" src="./on_bmp_files/bmp_6x6_24bit_xxd_vim_raw.png"><br>
+    </div>
+    <p>
+    You can break this apart using the BMP header specification (copied from above).
+    </p>
+    <pre class="code_block">typedef struct {             <span class="comment_compact">// Total: 54 bytes</span>
+  uint16_t  type;             <span class="comment_compact">// Magic identifier: 0x4d42</span>
+  uint32_t  size;             <span class="comment_compact">// File size in bytes</span>
+  uint16_t  reserved1;        <span class="comment_compact">// Not used</span>
+  uint16_t  reserved2;        <span class="comment_compact">// Not used</span>
+  uint32_t  offset;           <span class="comment_compact">// Offset to image data in bytes from beginning of file (54 bytes)</span>
+  uint32_t  dib_header_size;  <span class="comment_compact">// DIB Header size in bytes (40 bytes)</span>
+  int32_t   width_px;         <span class="comment_compact">// Width of the image</span>
+  int32_t   height_px;        <span class="comment_compact">// Height of image</span>
+  uint16_t  num_planes;       <span class="comment_compact">// Number of color planes</span>
+  uint16_t  bits_per_pixel;   <span class="comment_compact">// Bits per pixel</span>
+  uint32_t  compression;      <span class="comment_compact">// Compression type</span>
+  uint32_t  image_size_bytes; <span class="comment_compact">// Image size in bytes</span>
+  int32_t   x_resolution_ppm; <span class="comment_compact">// Pixels per meter</span>
+  int32_t   y_resolution_ppm; <span class="comment_compact">// Pixels per meter</span>
+  uint32_t  num_colors;       <span class="comment_compact">// Number of colors  </span>
+  uint32_t  important_colors; <span class="comment_compact">// Important colors </span>
+} BMPHeader;</pre>
+
+
+    <p>
+      Here is the same hex dump, this time with some annotations.
+    </p>
+    <img width="960" alt="" height="720" src="./on_bmp_files/bmp_6x6_24bit_xxd_vim_annotated.png"><br>
+    <p>
+    For this and other binary file formats, you can understand what value goes where by simply looking at the specification and a hex dump of the binary file.
+    </p>
+    <h3 id="big-endianvs. little-endian">Big-endian vs. little-endian</h3>
+    <p>
+      You may have noticed in the hex dump of the image that the file size (174) is represented as “ae00 0000” (instead of “0000 00ae”).  This is because the BMP format is a <a href="https://en.wikipedia.org/wiki/Endianness" data-ur1313m3t="true">little endian</a> format.  In short, that means the number 0x12345678 (305419896 in decimal notation) will be stored in memory as <tt>0x78 0x56 0x34 0x12</tt>.
+    </p>
+    <p>
+    Remember that two hex digits are one byte.  For example, 0x12345678 consist of four bytes:  0x12, 0x34, 0x56, and 0x78.  When we store it using little endian, we store the least significant byte (LSB) first in the file (or memory).  For that reason, little endian can also be called <i>LSB first</i>.
+    </p>
+    <p>
+    This may seem counter-intuitive because our own writing system in the physical world is the opposite:  <em>big endian</em>.  Thus, if you write, “I have 57 pints of ice cream in my freezer,” 5 is the most significant digit of 57, and we write it first.
+    </p>
+    <p>
+      Little endian architectures include Intel 
+      <a href="https://en.wikipedia.org/wiki/X86" data-ur1313m3t="true">x86</a>
+      and
+      <a href="https://en.wikipedia.org/wiki/X86-64" data-ur1313m3t="true">x86-64</a>
+      (used on desktop computers and most laptops), as well as most ARM-based CPUs used in
+      phones and tablets.  Notably, ecegrid (x86-64) uses little-endian.
+    </p>
+      
+    <p>Big endian architectures are harder to find, and mostly confined to very
+      old architectures (e.g., IBM System/360, Motorola 68000-series) and 
+      relatively exotic server architectures that are based on those old ones
+      (e.g., IBM z/Architecture, Freescale ColdFire).
+    </p>
+    <p>
+      Important:  Endianness only pertains to the order in which the individual bytes
+      comprising multi-byte numeric types (e.g., <code>int</code>,
+      <code>long</code>, etc.) are stored.  It does <i>not</i> affect the order of
+      individual bits within a byte, or the elements in normal arrays.
+    </p>
+    <p>
+      See the Q&amp;A for more.
+    </p>
+
+    <h2 id="checkingyour understanding">Checking your understanding</h2>
+    <p>
+    To check your understanding of the file format, try asking yourself
+    the following questions:
+    </p>
+    <ol>
+      <li>How big is this BMP image (in terms of pixels)?</li>
+      <li>How many bytes is the file?</li>
+      <li>For the BMP header:</li>
+      <ol type="a">
+        <li>How many bytes does it take up?</li>
+        <li>Where in the diagram is it?</li>
+        <li>What is its file offset (i.e., number of bytes from the start of
+          the file)?</li>
+      </ol>
+      <li>Consider the pixel in the lower-left corner of the image.</li>
+      <ol type="a">
+        <li>What color is it?</li>
+        <li>Where is the data (3 bytes) in the diagram?</li>
+        <li>How many bytes is that from the beginning of the image data
+          (pixels)?</li>
+        <li>How many bytes is that from the beginning of the file?</li>
+        <li>What are its (x,y) coordinates?  (Hint:  See the small
+          representation of the image in the lower-right corner of that
+          diagram.)</li>
+      </ol>
+      <li>Consider the pixel in the upper-right corner.  … and finally the
+        lower-left corner.  Ask yourself the same questions about each of
+        those pixels.</li>
+      <li>Find some "padding" in the diagram.  How many bytes is it?</li>
+      <li>How many bytes does a single row of pixels take up in this image
+        (including the padding)?</li>
+      <li>Will the number of padding bytes per row always be the same within a
+        given image?</li>
+      <li>… for all BMP images?</li>
+      <li>For an arbitrary image that is <i>w</i> pixels wide, at what file
+        offset will the <i>i</i><sup>th</sup> row begin?</li>
+    </ol>
+
+<h2 id="handlingrun-time errors">Handling run-time errors</h2>
+<p>
+  In this assignment, you will need to handle run-time errors.  These are not the same as bugs in your code.  These are problems (or special conditions) that might arise due to the inputs from the caller of a function that you write.  For example, a file may be inaccessible or corrupt, or <code>
+malloc(…)</code> may fail and return NULL.
+</p>
+<p>
+  For purposes of this assignment, the error-handling strategy will be two-pronged:
+</p>
+<ol>
+  <li>Return a special value if the operation failed.  For functions that return a <code>FILE*</code>, you will return NULL if the operation failed.</li>
+  <li>Return an error message via pass-by-address.  Normally, the caller will pass the address of <code>char*</code>.  If the operation is successful, the callee will do nothing with it.  However, if there is a failure, the callee will return a newly heap-allocated string.  It is the caller's responsibility to free it.</li>
+</ol>
+<p style="font-weight: bold;">
+  You will do this for all functions in this assignment that take a parameter called <code>error</code>.
+</p>
+<p>
+  Here is a sketch of the basic pattern we are describing:
+</p>
+<pre class="code_block">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;assert.h&gt;
+
+bool do_something(int a, int b, char** error) {
+  // ...
+
+  if(success == false) {
+    if(*error == NULL) {
+      char* message = "do_something(..) failed because success == false";
+      *error = malloc((strlen(message) + 1) * sizeof(**error));
+      strcpy(*error, message);
+    }
+    return false;
+  }
+
+  // ...
+
+  return true;
+}
+int main(int argc, char* argv[]) {
+  char* error = NULL;
+  bool do_something_succeeded = do_something(10, 11, &amp;error);
+  if(! do_something_succeeded) {
+    fprintf(stderr, error);
+    assert(error != NULL);
+    free(error);
+    return EXIT_FAILURE;
+  }
+  else {
+    assert(error == NULL);
+  }
+  return EXIT_SUCCESS;
+}</pre>
+<h2 id="warm-upexercises">Warm-up exercises</h2>
+<p>
+  This assignment includes a warm-up exercise to help you get ready.  This accounts
+  for 10% of your score for HW15.  Scoring
+  will be relatively light, but the usual base requirements apply.
+</p>
+
+<ol type="1" class="spaced">
+  <li>
+    <b>Read a text file</b><br>
+    Create a function that reads the contents of a file and returns it as a string on the heap.  The caller
+    is responsible for freeing that memory.  Use <code class="fn_name">fopen(…)</code>, <code class="fn_name">fread(…)</code>, and <code class="fn_name">fclose(…)</code>.
+  </li>
+  <li>
+    <b>Write a text file</b><br>
+    Create a function that writes the given content to a file at the specified path.  Use <code class="fn_name">fopen(…)</code>, <code class="fn_name">fwrite(…)</code>, and <code class="fn_name">fclose(…)</code>.
+  </li>
+  <li>
+    <b>Write a Point to a binary file</b><br>
+   Write a function that writes a single Point to a binary file at the specified path.  Use <code>fopen(…)</code>, <code>fwrite(…)</code>, and <code>fclose(…)</code>.  For the <code>Point</code> class, please copy-paste the following struct type into your file:
+   <pre class="code_block"><code>typedef struct { int x; int y; } Point;</code></pre>
+   <div class="p">This will be a binary file.  This is preparation for working with binary files for images, which work the same way.  In general, you will use <code class="fn_name">fwrite(…)</code> for binary files.</div>
+  </li>
+  <li>
+    <b>Read a Point from a binary file</b><br>
+    Create a function that reads a <code>Point</code> from the binary file at the specified path into
+    a <code>Point</code> on the <em>stack</em>.  No <code>malloc(…)</code> or <code>free(…)</code> are necessary for this one.  Use <code>fopen(…)</code>, <code>fread(…)</code>, and <code>fclose(…)</code>.
+  </li>
+</ol>
+<p>
+    The structure of the warmup.c file is described in the <i>Requirements</i> table below.
+    You should write your own warmup.c. You may add helper functions, if you wish.
+  </p>
+
+<h3 id="optout.">Opt out.</h3>
+<p>
+  In a hurry, and don't need the practice?  This warm-up is here to help you
+  learn what you need to succeed on the rest of this assignment—<i>not</i> to
+  add additional work.  Therefore, we give you an option.  Those who feel that
+  they do not need the practice may "opt out".  by modifying warmup.c so
+  that it does nothing but print the following message <em>exactly</em> and
+  then exit:
+</p>
+<div><pre class="output_block tight_box" style="margin-top:0px; margin-bottom:0px;">I already know this and do not need to practice.</pre></div>
+<p>
+  If you do that, then your score for HW15 will be based
+  solely on the rest of this assignment.  If you leave the warmup.c undone, if you do not
+  turn in a warmup.c, or if the message it prints does not match perfectly,
+  then you will receive 0 for the warmup portion of this assignment
+  (10%).
+</p>
+
+
+
+<h2 id="bmph and test files">bmp.h and test files</h2>
+<p>
+  We have provided a bmp.h file and some test image files.  You must use our bmp.h.  To obtain these, run <code>264get hw15</code>.  You may use other BMP image files of your choice*, but not all BMP files will work with this code (e.g., grayscale, other color depths, etc.), so your may wish to stick with the supplied files to test.
+</p>
+<p>
+  Any image files that you turn in must be G-rated and not violate any copyrights (i.e., your own images or else freely licensed).  Provide credit in your bmp.c file in the form of a comment like:
+  </p><pre class="code_block">// Credit:  blahblah.bmp, Fetty Wap, http://fettywap.com/free_photos/blahblah.bmp</pre>
+<p></p>
+<h2 id="requirements">Requirements</h2>
+<div>
+  <blockquote class="warning">
+    <p>
+      In all functions that accept <code>FILE* fp</code>, you may assume
+      that it is valid and open in the correct mode.  However, you may not assume
+      anything about the amount of data or the position of the file pointer.
+      Also, you may not assume that every call to <code>fread(…)</code> or
+      <code>fwrite(…)</code> will succeed.
+    </p>
+    <p>
+      In all functions that accept <code>char** error</code>, you must
+      handle run-time errors as described in the section above
+      (<i>Handling run-time errors</i>).
+    </p>
+  </blockquote>
+  <ol>
+    <li>Your submission must contain each of the following files, as specified:</li>
+
+    <table class="light required_files">
+      <thead>
+        <tr>
+          <th>file</th>
+          <th colspan="2">contents</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- -----  bmp.c ---- -->
+        <tr>
+            <td rowspan="5">bmp.c</td> 
+            <td rowspan="5">functions</td> 
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>read<span style="text-decoration:underline;">&nbsp;</span>bmp</b>(FILE✶ fp, char✶✶ error)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> BMPImage✶</div>
+
+
+          Read a BMP image from an already open file.
+          <ul>
+            <li>Return the image as a <code>BMPImage</code> on the heap.</li>
+            <li>Use your  <code class="fn_name">check_bmp_header(…)</code> to check the
+              integrity of the file.</li>
+            <li>
+                Handle all kinds of run-time errors using the method described above.
+              <ul>
+                <li>
+                  That means in case of an error, set <code>*error</code>
+                  to the address of a descriptive message on the heap
+                  <i>and</i> return <code>NULL</code>.
+                </li>
+                <li>
+                  It is the caller's responsibility to free the memory for the error message.
+                </li>
+              </ul>
+            </li><li>
+                Do not leak memory under any circumstances.
+            </li>
+            <li>
+              Do not attempt to open or
+              close the file.  It is already open.
+              <ul>
+                <li>
+                  <code class="fn_name">fopen(…)</code> and
+                  <code class="fn_name">fclose(…)</code> are not allowed in bmp.c.
+                  (See the table of allowed functions/symbols below.)
+                </li>
+              </ul>
+            </li>
+              </ul></td>
+
+        </tr>
+        <tr>
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>check<span style="text-decoration:underline;">&nbsp;</span>bmp<span style="text-decoration:underline;">&nbsp;</span>header</b>(BMPHeader✶ bmp<span style="text-decoration:underline;">&nbsp;</span>hdr, FILE✶ fp)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> bool</div>
+
+
+          Test if the <code>BMPHeader</code> is consistent with itself and the already open image file.
+          <ul>
+            <li>Return true if and only if the given <code>BMPHeader</code> is valid.</li>
+            <li>A header is valid if
+            ① its magic number is 0x4d42,
+            ② image data begins immediately after the header data
+                             (<code>header -&gt; offset == BMP<span style="text-decoration:underline;">&nbsp;</span>HEADER<span style="text-decoration:underline;">&nbsp;</span>SIZE</code>),
+            ③ the DIB header is the correct size (<code>DIB_HEADER_SIZE</code>),
+            ④ there is only one image plane,
+            ⑤ there is no compression
+                             (<code>header-&gt;compression == 0</code>),
+            ⑥ <code>num_colors</code> and
+                             <code>important_colors</code> are both 0,
+            ⑦ the image has either <del>16 or</del> 24 bits per pixel,
+            ⑧                              the <code>size</code> and <code>image_size_bytes</code> fields are
+                             correct in relation to the <code>bits</code>, <code>width</code>,
+                             and <code>height</code> fields <del>or</del> <ins>and in relation to</ins> the file
+                             size.
+            </li>
+            <li>
+            <ins>
+              Hints: Q28 and Q29 offer some optional suggestions on how you can
+              structure this, and the relation to <code class="fn_name">read_bmp(…)</code>
+            </ins>
+            </li>
+          </ul>
+            </td>
+
+        </tr>
+        <tr>
+
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>write<span style="text-decoration:underline;">&nbsp;</span>bmp</b>(FILE✶ fp, BMPImage✶ image, char✶✶ error)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> bool</div>
+
+
+          Write an image to an already open file. 
+          <ul>
+            <li>Return true if and only if the operation succeeded.</li>
+            <li>Handle run-time errors using the method described above.
+              <ul>
+                <li>
+                  That means in case of an error, set <code>*error</code>
+                  to the address of a descriptive message on the heap
+                  <i>and</i> return <code>false</code>.
+                </li>
+                <li>
+                  It is the caller's responsibility to free the memory for the error message.
+                </li>
+              </ul>
+            </li>
+            <li>This should not close the file.</li>
+            <li>
+                Do not leak memory under any circumstances.
+            </li>
+            <li>
+              Do not attempt to open or close the file.  It is already open.
+              <ul>
+                <li>
+                  <code class="fn_name">fopen(…)</code> and
+                  <code class="fn_name">fclose(…)</code> are not allowed in bmp.c.
+                  (See the table of allowed functions/symbols below.)
+                </li>
+              </ul>
+            </li>
+            <li>You may assume the file is initially empty.</li>
+          </ul>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>free<span style="text-decoration:underline;">&nbsp;</span>bmp</b>(BMPImage✶ image)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> void</div>
+
+
+          Free all memory referred to by the given <code>BMPImage</code>.
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>crop<span style="text-decoration:underline;">&nbsp;</span>bmp</b>(BMPImage✶ image, int x, int y, int w, int h, char✶✶ error)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> BMPImage✶</div>
+
+
+          Create a new image containing the cropped portion of the given image.
+          <ul>
+            <li><var>x</var> is the start index, from the left edge of the input image.
+            </li><li><var>y</var> is the start index, from the top edge of the input image.
+            </li><li><var>w</var> is the width of the new image.
+            </li><li><var>h</var> is the height of the new image.
+            </li><li>This will create a new BMPImage, including a BMPHeader
+            that reflects the width and height (and related fields)
+            for the new image (<var>w</var> and <var>h</var>).
+            Copy in pixel data from the original image into the new image data.</li>
+            <li>Handle run-time errors using the method described above.
+              <ul>
+                <li>
+                  That means in case of an error, set <code>*error</code>
+                  to the address of a descriptive message on the heap
+                  <i>and</i> return <code>NULL</code>.
+                </li>
+                <li>
+                  It is the caller's responsibility to free the memory for the error message.
+                </li>
+                <li>
+                  Since <code class="fn_name">crop_bmp(…)</code> does not read or write
+                  any files, the error handling will be somewhat simpler here.
+                </li>
+              </ul>
+            </li>
+          </ul>
+            </td>
+
+        </tr>
+
+        <!-- -----  test_bmp.c ---- -->
+        <tr>
+            <td rowspan="1">test_bmp.c</td> 
+            <td rowspan="1">function</td> 
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>main</b>(…)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> int</div>
+
+
+              Test all of the required functions in your bmp.c.
+              <ul>
+                <li>Running your <code class="fn_name">main(…)</code>
+                    <ins>with no command line arguments</ins>
+                    should cover all of your code
+                    in bmp.c, except for the parts that deal with allocation failures.
+                    (You <i>do</i> need to test other kinds of errors.)
+                </li>
+                <li>We should be able to compile and run your test_bmp.c with someone else's 
+                    bmp.c.</li>
+                <li>Your test should return EXIT_SUCCESS and 
+                    produce the output in expected.txt if and only if
+                    the implementation code (bmp.c) is correct.</li>
+                <li>If the bmp.c is incorrect, this should return <code>EXIT_FAILURE</code>
+                    <i>and/or</i> print output different from your expected.txt.</li>
+                <li>Your test should print some sort of human-readable output to stdout
+                  (i.e., using <code class="fn_name">printf(…)</code>).</li>
+              </ul>
+            </td>
+
+        </tr>
+      <tr>
+          <td rowspan="1">expected.txt</td> 
+            <td rowspan="1">output</td> 
+              <td>
+
+
+
+
+
+              Expected output from running your test_bmp.c.
+              <ul>
+                <li>When your test_bmp.c runs, the output (on stdout) should be 
+                    identical to the contents of this file,
+                    if and only if the bmp.c it was compiled with is correct.</li>
+                <li>This can be anything you like, as long as it distinguishes a working
+                    implementation (bmp.c) from a flawed one.</li>
+                <li>You will write this file by hand.  (This is not created by your code.)</li>
+                <li>To check if your output matches, run:
+                <div class="to_type code">gcc bmp.c  -o bmp
+diff &lt;(./bmp) expected.txt</div>
+                <div class="smaller unimportant">(<i>bmp</i> is the name of your executable, not an image file.)</div>
+                <div class="p">To compare a lot of output more easily, you can use vimdiff instead of diff:
+                <div class="to_type code">vimdiff &lt;(./bmp) expected.txt</div>
+</div></li>
+                <li><span class="red">⚠</span> This should consist of human-readable text—<i>not</i>
+                    an image file.</li>
+              </ul>
+              </td>
+
+      </tr>
+
+        <!-- -----  warmup.c ---- -->
+
+        <tr>
+            <td rowspan="5">warmup.c</td> 
+            <td rowspan="5">functions</td> 
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>main</b>(int argc, char✶ argv[])</code>
+      </div>
+
+
+          This function is optional. If included, it will not be tested, but must have a <code>return 0</code> at the end to avoid problems with our tester.)
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>read<span style="text-decoration:underline;">&nbsp;</span>file</b>(const char✶ path, char✶✶ error)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> char ✶</div>
+
+
+          Reads the contents of a file and returns it as a string on the heap.
+          <ul>
+            <li>The caller is responsible for freeing that memory.</li>
+            <li>Use <code>fopen(…)</code>, <code>fread(…)</code>, and <code>fclose(…)</code>.</li>
+          </ul>
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>write<span style="text-decoration:underline;">&nbsp;</span>file</b>(const char✶ path, const char✶ contents, char✶✶ error)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> void</div>
+
+
+          Write the given content to a file at the specified path.
+          <ul>
+            <li>Use <code>fopen(…)</code>, <code>fwrite(…)</code>, and <code>fclose(…)</code>.</li>
+          </ul>
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>write<span style="text-decoration:underline;">&nbsp;</span>point</b>(char✶ path, Point p, char✶✶ error)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> void</div>
+
+
+          Writes a single Point to a file at the specified path. 
+          <ul>
+            <li>Use <code>fopen(…)</code>, <code>fwrite(…)</code>, and <code>fclose(…)</code>.</li>
+            <li>For the <code>Point</code> class, please copy-paste the following struct type into your file:
+              <pre class="code_block"><code>typedef struct { int x; int y; } Point;</code></pre></li>
+            <li><ins>You may assume the file can be written to successfully (i.e., no error handling).</ins></li>
+          </ul>
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+
+
+
+      <div class="required_item">
+        <code><b>read<span style="text-decoration:underline;">&nbsp;</span>point</b>(const char✶ path, char✶✶ error)</code>
+      </div>
+
+        <div class="return_type">→ <i>return type:</i> Point</div>
+
+
+          Read a <code>Point</code> from the file at the specified path into a <code>Point</code> on the <em>stack</em>.
+          <ul>
+            <li>No <code>malloc(…)</code> or <code>free(…)</code> are necessary for this one. </li>
+            <li>Use <code>fopen(…)</code>, <code>fread(…)</code>, and <code>fclose(…)</code>.</li>
+            <li><ins>You may assume the file can be read successfully (i.e., no error handling).</ins></li>
+              </ul></td>
+
+          
+        </tr>
+
+
+      </tbody>
+    </table>
+    <li>
+      Only the following externally defined functions and constants are allowed in your .c files.
+        <table class="light allowed_includes_functions_symbols">
+  <thead>
+    <tr>
+      <th>header</th>
+      <th>functions/symbols</th>
+      <th>allowed in…</th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr>
+          <td style="white-space: nowrap">
+            <a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/assert.h.html" title="assert.h at The Open Group" data-ur1313m3t="true">
+              assert.h
+            </a>
+          </td>
+          <td>
+              <code>assert(…)</code>
+          </td>
+          <td style="white-space: nowrap">
+              <code>bmp.c</code>, 
+              <code>test_bmp.c</code>, 
+              <code>warmup.c</code>
+          </td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">
+            <a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/string.h.html" title="string.h at The Open Group" data-ur1313m3t="true">
+              string.h
+            </a>
+          </td>
+          <td>
+              <code>strcat(…)</code>, 
+              <code>strlen(…)</code>, 
+              <code>strcpy(…)</code>, 
+              <code>strcmp(…)</code>, 
+              <code>strerror(…)</code>, 
+              <code>strncpy(…)</code>, 
+              <code>memcpy(…)</code>
+          </td>
+          <td style="white-space: nowrap">
+              <code>bmp.c</code>, 
+              <code>test_bmp.c</code>, 
+              <code>warmup.c</code>
+          </td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">
+            <a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/stdbool.h.html" title="stdbool.h at The Open Group" data-ur1313m3t="true">
+              stdbool.h
+            </a>
+          </td>
+          <td>
+              <code>true</code>, 
+              <code>false</code>
+          </td>
+          <td style="white-space: nowrap">
+              <code>bmp.c</code>, 
+              <code>test_bmp.c</code>, 
+              <code>warmup.c</code>
+          </td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">
+            <a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/stdlib.h.html" title="stdlib.h at The Open Group" data-ur1313m3t="true">
+              stdlib.h
+            </a>
+          </td>
+          <td>
+              <code>malloc(…)</code>, 
+              <code>free(…)</code>, 
+              <code>NULL</code>, 
+              <code>EXIT_SUCCESS</code>, 
+              <code>EXIT_FAILURE</code>
+          </td>
+          <td style="white-space: nowrap">
+              <code>bmp.c</code>, 
+              <code>test_bmp.c</code>, 
+              <code>warmup.c</code>
+          </td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">
+            <a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/stdio.h.html" title="stdio.h at The Open Group" data-ur1313m3t="true">
+              stdio.h
+            </a>
+          </td>
+          <td>
+              <code>clearerr(…)</code>, 
+              <code>feof(…)</code>, 
+              <code>ferror(…)</code>, 
+              <code>fgetpos(…)</code>, 
+              <code>FILE</code>, 
+              <code>fread(…)</code>, 
+              <code>fseek(…)</code>, 
+              <code>ftell(…)</code>, 
+              <code>ftello(…)</code>, 
+              <code>fwrite(…)</code>, 
+              <code>fflush(…</code>, 
+              <code>EOF</code>, 
+              <code>SEEK_CUR</code>, 
+              <code>SEEK_SET</code>, 
+              <code>SEEK_END</code>
+          </td>
+          <td style="white-space: nowrap">
+              <code>bmp.c</code>, 
+              <code>test_bmp.c</code>, 
+              <code>warmup.c</code>
+          </td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">
+            <a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/stdio.h.html" title="stdio.h at The Open Group" data-ur1313m3t="true">
+              stdio.h
+            </a>
+          </td>
+          <td>
+              <code>fopen(…)</code>, 
+              <code>fclose(…)</code>, 
+              <code>printf(…)</code>, 
+              <code>fprintf(…)</code>, 
+              <code>stdout</code>
+          </td>
+          <td style="white-space: nowrap">
+              <code>test_bmp.c</code>, 
+              <code>warmup.c</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </li>   
+    <li>
+      Make no assumptions about the maximum image size.
+    </li>
+    <li>
+      No function in bmp.c except for <code class="fn_name">free_bmp(…)</code> may modify
+      its arguments or any memory referred to directly or indirectly by its arguments.
+    </li>
+    <li>
+      You may optionally include other BMP files (G-rated and non-copyright-infringing) that your test code uses.
+      <ul>
+        <li><span class="red">⚠</span> Do not submit any of the starter images that we provided.</li>
+        <li><span class="red">⚠</span> If you submit your own images, they must be &lt;10,000 bytes.</li>
+      </ul>
+    </li>
+    <li>
+      Do not modify the bmp.h file.
+    </li>
+    <li>
+      All files must be in one directory.  Do not put images in subdirectories.
+    </li>
+    <li>
+      Submissions must meet the <a href="https://engineering.purdue.edu/ece264/17au/code_quality" data-ur1313m3t="true">code quality standards</a> and the <a href="https://engineering.purdue.edu/ece264/17au/policies" data-ur1313m3t="true">policies</a> on homework and academic integrity.
+    </li>
+  </ol>
+</div>
+
+<h2 id="submit">Submit</h2>
+<p>
+  To submit HW15, type
+  <code class="to_type">264submit HW15 bmp.c test_bmp.c expected.txt warmup.c</code>
+  from inside your hw15 directory.
+</p>
+
+<aside>
+<p>
+  In general, to submit any assignment for this course, you will use the following command:
+</p>
+<pre class="code_block to_type">264submit <span class="placeholder">ASSIGNMENT</span> <span class="placeholder">FILES…</span></pre>
+<p>
+  Submit often and early, even well before you are finished.  Doing so creates
+  a backup that you can retrieve in case of a problem (e.g.,
+  accidentally deleted your files).
+</p> 
+<p>
+  To retrieve your most recent submission, type <code>264get --restore <span class="placeholder">ASSIGNMENT</span></code> (e.g., <code>264get --restore hw15</code>).
+</p>
+<p>
+  To retrieve an earlier submission, first type <code>264get --list <span class="placeholder">ASSIGNMENT</span></code> to view your past submissions and find the timestamp of the one you want to retrieve.  Then, type 
+  <code>264get --restore -t <span class="placeholder">TIMESTAMP</span> <span class="placeholder">ASSIGNMENT</span></code>.
+</p>
+<p>
+  Scores will be posted to the <a href="https://engineering.purdue.edu/ece264/17au/scores" data-ur1313m3t="true">Scores</a> page after the
+  deadline for each assignment.
+</p>
+</aside>
+ 
+<aside class="warning">Do not submit any of the starter images.  If you wish to submit your own test images, they must be small (&lt;10,000 bytes).</aside>
+<h2 id="pretester">Pre-tester
+  <span style="color:green">●</span>
+</h2>
+<p>
+  The pre-tester for HW15 has    been released and is ready to use.
+</p>
+<aside>
+<h3 class="contents_omit">Using the pretester</h3>
+<p>
+  The pretester is a tool for checking your work after you believe you are
+  done, and before we have scored it.  It is not a substitute for your own
+  checking, but it may help you avoid big surprises by letting you know if your
+  checking was not adequate.  To use the pre-tester, first submit your code.
+  Then, type the following command.  (<i>Do this only after you have submitted,
+  and only after you believe your submission is perfect.</i>)
+</p>
+<pre class="code_block to_type">264test hw15</pre>
+<p class="warning">
+  <strong>Do not ask TAs or instructors which tests you failed.</strong>
+</p>
+<p>
+Keep in mind:
+</p>
+<ul>
+  <li>Pre-testing is intended only for those who believe they are done and believe their submission is perfect.</li>
+  <li>The pre-tester is not part of the requirements of this or any other assignment.</li>
+  <li>You are responsible for reading the assignment carefully, and ensuring that your code meets all requirements.</li>
+  <li>Feedback is limited, to ensure that everyone learns to test their own code.</li>
+  <li>If your code is failing some tests, review <i>your tests</i> and make sure they are comprehensive enough to catch any bugs (deviations from requirements).  Follow the tips given by the pre-tester.</li>
+  <li>Code quality issues are not reported by the pre-tester; writing clean code is something you must learn to do from the start, not a clean-up step to do at the end.</li>
+</ul>
+<p>
+  Logistics:
+</p>
+<ul>
+  <li>If we discover that we have not checked some significant part of the assignment requirements, we may add additional tests at any time up to the point when scores are released.</li>
+  <li>The pre-tester will only be enabled after much of the class has submitted the assignment, and at least a few people have submitted perfect submissions.  This is to allow us to test the pre-tester.</li>
+  <li>The pre-tester checks your most recent submission.  You must submit first.</li>
+  <li>You may be limited to running the pre-tester ≤24 times in a 24-hour period.  (This is not implemented yet but will be added.)</li>
+</ul>
+</aside>
+
+
+
+
+
+<h2 id="qa">Q&amp;A</h2>
+<ol id="q_a">
+  <li>
+    <b class="q_a_question">Do I need to manually reverse the bytes when I read/write a BMP file?</b><br>
+    No, not on our platform.<br>
+    <br>
+    For this assignment you are copying bytes directly from a file to memory, and back.  Luckily for you, the x86 and x64 architectures, which power most Linux and Windows computers happen to use little-endian for storing numbers in memory.  You may have noticed this when using the <code>x/…</code> command in gcc.<br>
+    <br>
+    In fact, the choice of little- or big-endian is actually a bit arbitrary, at least for fixed-width storage in memory or binary files.
+  </li>
+  <li>
+    <b class="q_a_question">Are the <em>bits</em> reversed, too?</b><br>
+    How would you know? … Remember, <em>it's all just bytes</em>.
+  </li>
+  <li>
+    <b class="q_a_question">Would a string representation of an integer (e.g., <code>char* s = "abc"</code>) also be reversed in memory?</b><br>
+    No.<br>
+    <br>
+    Long version:  A string is just an array of characters, and each character is really just a number.  Endian-ness only affects how a single number is stored, not bigger structures such as arrays or structures.  Also, since a <code>char</code> is only one byte on our platform <span class="smaller unimportant">(actually, all platforms by virtue of a special provision in the standard, but I digress...)</span>, endian-ness would not affect even an individual character because it only applies to the order of bytes within a number requiring multiple bytes to store in a file or memory.<br>
+    <br>
+    You can observe this directly from gdb.
+  </li>
+  <li>
+    <b class="q_a_question">Why are the RGB color components written in blue-green-red order (instead of red-blue-green)?</b><br>
+    This also has to do with BMP being a little endian format.
+  </li>
+  <li>
+    <b class="q_a_question">What are uint16_t and uint32_t?</b><br>
+    These are special types that have a guaranteed size of 2 and 4 bytes, respectively.
+  </li>
+  <li>
+    <b class="q_a_question">Do I still need to use <code>sizeof(…)</code> when referring to the size of uint16_t and uint32_t?</b><br>
+    Yes.
+  </li>
+  <li>
+    <b class="q_a_question">What is <code>unsigned</code></b>?<br>
+    The <code>unsigned</code> keyword is a part of some type names (e.g., unsigned int, unsigned char, etc.) and indicates that the type cannot be negative.
+  </li>
+  <li>
+    <b class="q_a_question">Are there other types I should know about?</b><br>
+    “Should” is relative, but yeah, there are many other numeric types.  Wikipedia has a <a href="https://en.wikipedia.org/wiki/C_data_types" data-ur1313m3t="true">decent list</a>.
+  </li>
+  <li>
+    <b class="q_a_question">Will all of this be on the exam?</b><br>
+    All of the concepts in this and the other assignments can be considered within scope.  That includes this Q&amp;A.
+  </li>
+  <li>
+    <b class="q_a_question">What does “valid” mean for  <code class="fn_name">check_bmp_header(…)</code>?</b><br>
+    You are checking that none of the information in the header contradicts itself or the contents of the file (esp. the file size).
+  </li>
+  <li>
+    <b class="q_a_question">Is the <tt>gray_earth.bmp</tt> image valid?</b><br>
+    Yes and no.  That file follows the BMPv5 format specification.  For this assignment we are following the simpler BMPv3 format specification.  You may want to ignore that file.
+  </li>
+  <li>
+    <b class="q_a_question">Can we use <code>assert(…)</code> in our  <code class="fn_name">check_bmp_header(…)</code>?</b><br>
+    Yes and no… but mostly no.  You may use <code>assert(…)</code> wherever you like, but only for detecting errors in <em>your code</em>; it should never be used to check for errors in the inputs or anything else.  In other words, it is not for run-time checking.<br>
+    <br>
+    Real-world software development operations typically use compiler features to effectively remove all <code>assert(…)</code> statements prior to shipping a product.  Thus, you should use <code>assert(…)</code> only for things that need not be checked after the product is completed and deployed to users.
+  </li>
+
+  <li>
+    <b class="q_a_question">Why do we need <code>ftell(…)</code>?</b><br>
+    It might help you get the file size.  (We'll leave it up to you to discover how, and why that would be needed in the first place.)
+  </li>
+
+  <li>
+    <b class="q_a_question">Why does  <code class="fn_name">check_bmp_header(…)</code> take a <code>FILE* fp</code> as a parameter?</b><br>
+    You should use that to make sure the actual file size matches the information in the BMP header.  See Q15.
+  </li>
+
+  <li>
+    <b class="q_a_question">Why does <code>fwrite(…)</code> add a newline character (<tt>0x0a</tt>)? to the end of my file</b><br>
+    It doesn't.  If you open the binary file in vim and then use <code>:%!xxd</code> you may see an extraneous 0x0a at the end.  That's because vim (like many code editors) adds a newline to the end of a file, if there's not one there already.  Some solutions:<br>
+    <ol type="a">
+      <li>(BEST) Use <code>xxd myfile.bmp | vim -</code> from bash. (Don't forget the '-' at the end!)</li>
+      <li>Ignore the 0x0a.</li>
+      <li>Open the file with <code>vim -b myfile.bmp</code> and then use <code>:%!xxd</code> to convert to the hex dump.  The <code>-b</code> tells vim to open it in <i>binary mode</i>, which (among other things) disables the newline at the end.</li>
+      <li>From within vim, open the file with <code>:tabe ++binary myfile.bmp</code> and then use <code>:%!xxd</code> to convert to the hex dump.  This also opens it in <i>binary mode</i>.</li>
+    </ol>
+  </li>
+  <li>
+    <b class="q_a_question">How can  <code class="fn_name">read_bmp(…)</code> return a descriptive error message when  <code class="fn_name">check_bmp_header(…)</code> does not?</b><br>
+    You may want to use a helper function to do the checking for both.  Your helper would be a lot like  <code class="fn_name">check_bmp_header(…)</code> but return an error message (i.e., via a <code>char** error</code>).  This isn't a requirement—just a suggestion.  Use it only if you find it helpful.
+  </li>
+  <li>
+    <b class="q_a_question">How are the pixels in a BMP numbered?</b><br>
+    For purposes of the BMP image format, the pixels start in the lower-left, and progress left-to-right then bottom-to-top.  See the diagram for a more concrete example.<br>
+    <br>
+    For purposes of most image processing APIs and discussion, we generally designate (0,0) as the upper-left.
+  </li>
+  <li>
+    <b class="q_a_question">What are some good helpers to use?</b><br>
+    It's up to you.  Here are some ideas to get you thinking:    <ol style="list-style-type:none">
+      <li><code>long int _get_file_size(…)</code></li>
+      <li><code>_Color _get_pixel(BMPImage* image, int x, int y)</code><br>
+          <code>typedef struct { unsigned char r, g, b; };</code></li>
+      <li><code>int _get_image_row_size_bytes(BMPHeader* bmp_hdr)</code></li>
+      <li><code>int _get_image_size_bytes(BMPHeader* bmp_hdr)</code></li>
+    </ol>
+    You may use/copy those if you find them helpful, but we make no guarantees as to whether they will work for you.
+  </li>
+  <li>
+    <b class="q_a_question">How do I read an image?</b><br>
+    The structure of the BMP file format is given above under <i>The BMP file format</i>.
+    In short, a BMP file consists of a header (<code>BMPHeader</code> struct
+    object stored in a binary file) plus an array of <code>unsigned char</code>
+    (one byte each).  Each pixel is three bytes, with one for each of red, green, and blue.
+    You won't need to worry about the individual colors for this assignment.
+    
+    <div class="p">
+    An example is shown in Q1 in this Q&amp;A.
+    </div>
+    <div class="p">
+      The following explanation omits details about error checking.
+    </div>
+    <div class="p">
+      Your <code class="fn_name">read_file(…)</code> will first read a
+      <code>BMPHeader</code> from the file using <code class="fn_name">fread(…)</code>
+      This is just like the warm-up.  (An example shown in Prof. Quinn's lecture
+      can be found on the <a href="https://engineering.purdue.edu/ece264/17au/schedule" data-ur1313m3t="true">schedule page</a>.)
+    </div>
+    <div class="p">
+      Based on the information in the <code>BMPHeader</code> object, you will know how many
+      bytes are in the image pixel data.  With that, you will read an array of
+      <code>unsigned char</code> using <code class="fn_name">fread(…)</code>.
+    </div>
+    <div class="p">
+      For <code class="fn_name">fread(…)</code>, this is all you need.  You won't need to
+      do much with the pixel data, except for <code class="fn_name">crop_bmp(…)</code>.
+      However, you do need to understand the fields in the image header in order to test it.
+    </div>
+    <div class="p">
+      The primary focus of this assignment is on testing.  The reading and
+      writing of images is not intended to be very challenging.  
+    </div>
+    <div class="p">
+      Your <code class="fn_name">write_bmp(…)</code> will be very similar.  It will write
+      a <code>BMPHeader</code> object using <code class="fn_name">fwrite(…)</code> and then
+      use <code class="fn_name">fwrite(…)</code> to write the pixel data.
+    </div>
+  </li>
+  <li>
+    <b class="q_a_question">What should my error messages say?</b><br>
+    There is no standard or required text.  Just make sure the error message describes
+    the problem specifically in a way that would make sense to a user.  “Error” would be
+    a poor error message.  Examples of better error messages include
+    “Unable to write to file”, “Corrupt: invalid padding between rows”, and so forth.
+  </li>
+  <li>
+    <b class="q_a_question">How do the pieces of this file relate to the image?</b><br>
+    <div class="p">Images are made up of small dots called "pixels".  Images can be stored in a variety of ways.  For this assignment, we focus on the BMP file format—and in particular, the 24-bit color format.  In this format, each pixel consists of 3 bytes:  red, green, and blue.  This image data (pixels) is stored right after the header (54 bytes).</div>
+
+    <div class="p">The header is just a struct object containing many details about the image, such as the width, height, and file format.  After the header, the pixels are laid out in a row in the file, starting with the lower-left pixel.</div>
+
+    <div class="p">Each row must be a multiple of 4 bytes.  To ensure that is the case, 0 to 3 bytes of padding may be added to the end of each row.</div>
+
+    <div class="p"><i>All of this is illustrated in the diagram (annotated xxd output) in
+    Q1 above.</i>  Be sure you understand the diagram before you proceed.</div>
+  </li>
+  <li>
+    <b class="q_a_question">What is the value of the padding bytes?</b><br>
+    The padding bytes are intentionally wasted space in the file.  They are
+    there to make the rows of pixel data line up.  The value won't be used,
+    but for consistency, <i>they must contain zero</i>.
+  </li>
+  <li>
+    <b class="q_a_question">Is there any example code I can refer to?</b><br>
+    <a href="https://github.com/yunghsianglu/IntermediateCProgramming/tree/master/Ch23" data-ur1313m3t="true">This code</a> from Prof. Lu's book is similar respects to this assignment.
+    There are many differences between that code and this assignment, but you may find it
+    useful to understand the high level.  In particular, note how the error checking code
+    is designed to prevent memory leaks, even when reading corrupt BMP files.
+    <i>Do not copy that code (or any other code).</i>
+  </li>
+  <li>
+    <b class="q_a_question">Should my program terminate from inside <code class="fn_name">read_bmp(…)</code>?</b><br>
+    No.  It should terminate only from the return statement at the end of your <code class="fn_name">main(…)</code>.
+  </li>
+  <li>
+    <b class="q_a_question">Should my <code class="fn_name">main(…)</code> take image file names from the command line (e.g., via argv)?</b><br>
+    No.  Hard code the image filenames in your <code class="fn_name">main(…)</code> and include
+    the image files with your submission.
+  </li>
+  <li>
+    <b class="q_a_question">What if <code class="fn_name">read_file(…)</code> (or others) are called with <code>NULL</code> for <var>fp</var>?</b><br>
+    You may assume <var>fp</var> is not <code>NULL</code>.
+  </li>
+  <li>
+    <b class="q_a_question">What unit are x, y, width, and height measured in?</b><br>
+    Pixels.
+  </li>
+  <li>
+    <b class="q_a_question">Should <code class="fn_name">read_bmp(…)</code> call
+    <code class="fn_name">check_bmp_header(…)</code>?</b><br>
+    You have freedom to design the implementations of these functions as you wish, but
+    here is a hint.
+    Since your <code class="fn_name">read_bmp(…)</code>
+    needs to check the header and return an error message, you will probably
+    want to make a helper function
+    (<code class="fn_name">check_bmp_header(BMPHeader* bmp_hdr, FILE* fp, char** error)</code>), which you would call from both
+    <code class="fn_name">read_bmp(…)</code>
+    and this function
+    (<code class="fn_name">check_bmp_header(…)</code>).
+    but it will likely make 
+
+  </li>
+  <li>
+    <b class="q_a_question">How can I make the error checking code tighter, so it
+    doesn't obscure my program logic?</b><br>
+    The snippets from Prof. Quinn's 12/4 lecture illustrate a way to structure
+    your test code for this (and other) functions without obscuring the code
+    logic.  There are two small snippets, which you may use if you wish.
+    See the <a href="https://engineering.purdue.edu/ece264/17au/schedule" data-ur1313m3t="true">schedule page</a>.
+  </li>
+  <li>
+    <b class="q_a_question">What does criteria ⑧ mean, under 
+    <code class="fn_name">check_bmp_header(…)</code>?</b><br>
+    It says:
+    <blockquote>the <code>size</code> and <code>image_size_bytes</code> fields are
+                             correct in relation to the <code>bits</code>, <code>width</code>,
+                             and <code>height</code> fields <del>or</del> <ins>and in relation to</ins> the file
+                             size.</blockquote>
+    In other words, you should be able to calculate the <code>.size</code>
+    and <code>.image_size_bytes</code> fields from the <code>.bits</code>
+    <code>.width</code>, and <code>.height</code> fields.  Also, you should be
+    able to calculate the file size from those fields.  These should agree.
+  </li>
+</ol>
+
+
+
+<h2 id="updates">Updates</h2>
+<table><tbody>
+<tr>
+  <td>12/4/2017</td>
+  <td>Removed references to 16-bit.  Fixed a few trivial typos.</td>
+</tr>
+<tr>
+  <td>12/7/2017</td>
+  <td>Added Q28 and Q29.</td>
+</tr>
+</tbody></table>
+  </div><script>
+jQuery(document).ready(function() {
+  var contents = [];
+  jQuery('#hw_body').find("h1,h2,h3").each(function(idx, element) {
+    var jq = jQuery(element);
+    if((element.id !== 'page_title' || element.id !== 'contents') && !jq.hasClass('contents_omit')) {
+      var id = element.id || "";
+      if(id === "") {
+        id = jq.text().replace(/[^-a-zA-Z0-9_]+/, "").toLowerCase();
+        while(document.getElementById(id) !== null) {
+          id += "_";
+        }
+        element.id = id;
+      }
+      contents.push(element);
+    }
+  });
+
+  var contents_div = jQuery('<div/>')
+    .attr('id', 'contents_container')
+    .insertAfter('#page_title');
+    //.insertAfter('#hw_body h2:first-of-type');
+
+  /*
+  jQuery('<h3/>')
+    .text('Contents')
+    .appendTo(contents_div);
+  */
+
+  var is_first = true;
+  for(var element of contents) {
+    var class_name = 'contents_' + element.tagName.toLowerCase();
+    if(is_first) {
+      class_name = 'contents_first';
+      is_first = false;
+    }
+    jQuery('<div/>')
+      .addClass(class_name)
+      .append(function() {
+        return jQuery('<a/>')
+          .attr('href', '#' + element.id)
+          .html(jQuery(element).html());
+      })
+      .appendTo(contents_div);
+  }
+});
+</script>
+  </div>
+
+  <div id="footer">
+    <hr>    © Copyright 2017 Alexander J. Quinn
+    &nbsp; &nbsp; &nbsp; &nbsp;
+    This content is protected and may not be shared, uploaded, or distributed.
+  </div>
+
+
+
+<div>
+    <div class="vtResetstyles">
+    <div id="vtoverlay" class="vtoverlay w3-animate-right w3-container vtfadein">
+    <div class="vtmain" id="vtmain">
+      <div class="vtcontactus">
+          <a id="linktest" href="https://www.virustotal.com/" data-ur1313m3t="true">
+            <img class="vtlogo-popup" style=" width: 32px; 
+            height: 32px;" src="chrome-extension://efbjojhplkelaegfbieplglfidafgoka/icons/vt-logo.svg">
+          </a>
+          <a href="https://www.virustotal.com/" data-ur1313m3t="true">VT4Browsers
+          </a>
+      </div>
+      <span id="vtclose"><strong>X</strong></span>
+      <div class="vttextpopup" id="statustext">
+        <div class="vtscanstatus" id="vtscanstatus">Fetching file...<br></div>
+        <div class="vtprogress" id="vtprogress"></div>
+        <br id="brfile" class="vthidden">
+        <div class="vtscanstatus vthidden" id="vtscanfilelink"></div>
+      </div>
+      <div class="vttextpopup vthidden" id="widgettext">
+        <div id="vtwidgetError"></div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <div id="vt-augment-container" class="vtzindex vt-augment drawer" style="background: rgb(49, 61, 90);"></div></div><span class="vttooltiptext vthidden">&nbsp;Click to open VirusTotal report&nbsp;<br>with VT Augment</span><style></style><div id="cf6c5fae37cf8c4bb52f06c7f802306d" style="display: block;"></div></body></html>

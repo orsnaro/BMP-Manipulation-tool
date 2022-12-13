@@ -1,7 +1,0 @@
-[
-{
-  "directory": "C:/Users/OmarPc/repo_CHROMA_BMP_proj/cv_cpp/build",
-  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/cv_cpp.dir/includes_CXX.rsp -O3 -DNDEBUG -o CMakeFiles\\cv_cpp.dir\\main.cpp.obj -c C:\\Users\\OmarPc\\repo_CHROMA_BMP_proj\\cv_cpp\\main.cpp",
-  "file": "C:/Users/OmarPc/repo_CHROMA_BMP_proj/cv_cpp/main.cpp"
-}
-]
