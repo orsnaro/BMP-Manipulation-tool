@@ -1,0 +1,34 @@
+ ================= THOSE ARE ONLY  OBSERVATIONS FROM MY EARLY TESTING ON MY SAMPLES ===========
+ 
+noticed the following : 
+
+0) size on disk proprtie on windows  show 0 byte size for files smaller than 1kb (using win 10 - dec 2022)
+1) editng signature of bmp file emidiatlly corrupts it
+
+2)missing with allignment "padding" in (pixles data section) emidiatlly currupts it
+
+3) appending to end of the bmp file "pixels data section" will have no effect only will increase actuall size of file .
+
+4) changing height and width variables in header :
+ a) increasing width or height  with out adding the new pixels will corrupt it 
+ b) decreasing width will work even if u dont set padding bytes to zero (will just ignore them)
+ note : still need to test 4.b further to see if sometimes it could corrupt the file
+ c) decreasing height will keep bmp working but the image will change ( the pixels will be at end  will be  discarded)
+ note : pixels data at end will be the first rows from top in a shown image (or first rows in index in cv2 python)
+ note : although image totally altered by changing those 2 variables , actuall size  still same on win and cv2 pyhton lib 
+ 
+5) increasing/decreasing  the total size or pixles sections size variables in header will not corrupt the file 
+and cv2 library in python for instance will stay read the actual pixles size (if there is any appended data that exceeds heigt and width cv2 will not add them )
+
+
+ 
+ 6) "DIB size" , "image section size" and "total size"  variables in header are merely for programmer refrence and structer,
+    neither wind nor cv2 depend on them 
+ note : (try set 3 of them to zero and save : image will run unchanged / size form propreties will not change / size on cv2 python will not change
+ 
+ 7) so conclude that the most 3 crusial variables are : file signature , width in pxl , height in pxl.
+ note : only deleting actuall bytes from file will change the size on windows and cv2 python lib
+ 
+ 
+ 
+ ================= THOSE ARE ONLY  OBSERVATIONS FROM MY EARLY TESTING ON MY SAMPLES ===========
