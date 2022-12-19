@@ -4,7 +4,7 @@
 *            info:                                                                                          *      
 *                    this is the static chroma .bmp Images project  console version (SCBMP.exe)             *
 *            version :                                                                                      *
-*                    pre_alpha_console_0.2                                                                  *
+*                    pre_alpha_console_0.5                                                                  *
 *            type :                                                                                         *
 *                    college solo project for 3rd year CS engineering at ksu  -> Multimedia/dr.Heba course  *
 *                                 																			*
