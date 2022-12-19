@@ -3,7 +3,7 @@
 typedef short int state_t;
 
           // --------------- ENUMS SECTION ----------------
-          
+
 enum class Signals_BMPstruct : state_t {
     //all valid states = 0 
     OK_FILE_TYPE, 
@@ -26,7 +26,12 @@ enum class Signals_BMPstruct : state_t {
 
 enum class Signals_app : state_t {
     //all valid states = 0
+    LOAD_OK= 0,
+
 
     // all invalid states != 0 and unique
+    BAD_LOAD 
+
 
 };
+

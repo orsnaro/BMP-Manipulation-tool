@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 #include "chroma.hpp"
+#include "app_enums.hpp"
 
-enum Main_signals{}; 
-Main_signals  app_start(void);
+Signals_app  app_start(void);
 
 
