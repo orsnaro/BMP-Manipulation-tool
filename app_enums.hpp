@@ -1,8 +1,9 @@
 #pragma once
 #include <iostream>
+typedef short int state_t;
 
           // --------------- ENUMS SECTION ----------------
-typedef short int state_t;
+          
 enum class Signals_BMPstruct : state_t {
     //all valid states = 0 
     OK_FILE_TYPE, 

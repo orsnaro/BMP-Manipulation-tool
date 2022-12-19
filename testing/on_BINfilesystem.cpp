@@ -48,7 +48,7 @@ int main() {
                   ios ::out); // if file not exist it creates it (re search it)
     if(!toFile){
         cout << "ERROR OPENING YOUR IMAGE TERMINATING..";
-        return -1
+        return -1;
     }
     cout << ">>Image : "  << path  << " is found!" << endl
         << ">>begin Importing data proccess ..." << endl;

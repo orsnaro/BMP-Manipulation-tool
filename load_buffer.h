@@ -16,7 +16,7 @@ class Load_buffer{
     public:
         static map <string , vector <BYTE> > buffer_map;
         Load_buffer( string file_abs_path , ) 
-        // buffer_map load_buffer()
+        buffer_map load_buffer()
 }
 
 
