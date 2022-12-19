@@ -34,7 +34,7 @@ struct Bmpspecs {
 };
 
 #pragma pack(4)
-struct BRG_pxl {//little indian of -> RGB colors
+struct BGR_pxl {//little indian of -> RGB colors
     //although its 24 bit img but will make one padding byte 
     BYTE blue_ch;
     BYTE green_ch;
