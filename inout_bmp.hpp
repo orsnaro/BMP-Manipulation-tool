@@ -28,6 +28,7 @@ class Init_img { //can be inhirited to load diff image formats
             const string bfr_mp_key = _raw_img_obj.bfrd_image_name;
             vector <BYTE> tmp_vec = _raw_img_obj.buffer_map[bfr_mp_key];
             vector<BYTE> dumy;
+            //TODO : use BGR_pxl struct also or make 4d pxl vector;
 
             //fill file header 
                 //ref : UINT32 bigvar = (var1 << 24) + (var2 << 16) + (var3 << 8) + var4;
@@ -98,12 +99,34 @@ class Init_img { //can be inhirited to load diff image formats
 
 
     //TODO : DO constructor
-};
+}init_img_obj;
 
 
           //----------------- GLOBAL FUNCTIONS SECTION -------------
 
-Signals_app save_image();
+Signals_app save_image(){
+
+    filesystem :: path new_img_pth = "/edited_image.bmp";
+
+    if (filesystem:: exists ( new_img_pth ) )//ACTUALLY NEEDED ONLY WHEN IOS::APP
+        filesystem::remove(new_img_pth);
+
+    ofstream new_img_obj("/edited_image.bmp" , ios::binary);
+
+    if( new_img_obj.is_open() && new_img_obj.good() ){
+        new_img_obj.write( (char*) &fil_hid_obj , sizeof(fil_hid_obj) );
+        new_img_obj.write( (char*) &bmp_spec_obj , sizeof(bmp_spec_obj) );
+        new_img_obj.write( (char*) &pxl_obj , sizeof(pxl_obj) );
+    }else{
+        cout << "ERROR SAVING!\n\n";
+        return Signals_app::SAVE_ERROR;
+    }
+    
+    filesystem::path abs_path = filesystem::current_path();
+    abs_path /= new_img_pth;
+
+    system(abs_path.string().c_str()); //to open edited image
+}
 //TODO: handle memory leak if user kept restarting app u must destruct those objcts
 
 

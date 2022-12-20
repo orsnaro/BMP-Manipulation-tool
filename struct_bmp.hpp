@@ -43,7 +43,7 @@ struct Raw_data{
     // char raw_data_arr[Bmpspecs.raw_data_sz] 
 };
 
-struct BGR_pxl {
+struct BGR_pxl {//NOT USED FOR NOW
     //little indian of -> RGB colors
     BYTE blue_ch;
     BYTE green_ch;

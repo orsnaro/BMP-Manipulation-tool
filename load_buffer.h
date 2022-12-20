@@ -11,6 +11,7 @@ using namespace std;
 // #define fs filesystem;
 typedef unsigned char BYTE;
 
+
 class Load_buffer{
 
     static int obj_cnt ; // to empty the map later ( max 5 images 'last recent 5 images')

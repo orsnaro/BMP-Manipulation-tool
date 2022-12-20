@@ -29,13 +29,14 @@ enum class Signals_app : state_t {
     //all valid states = 0
     APP_OK = 0,
     LOAD_OK= 0,
+    SAVE_OK= 0,
 
 
     // all invalid states != 0 and unique
     DONT_QUIT = 1,
     APP_ERROR,
-    BAD_LOAD 
-
+    BAD_LOAD, 
+    SAVE_ERROR
 
 }signals_app;
 
