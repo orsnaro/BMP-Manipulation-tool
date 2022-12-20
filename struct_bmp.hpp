@@ -22,20 +22,20 @@ struct Fileheader {
 
 struct Bmpspecs {
    const uint32_t  Bmpspecs_sz = 40;//i.e.(DIB header size only)
-   int32_t         img_width_px;
-   int32_t         img_height_px;
+   uint32_t         img_width_px;//originally uint32_t
+   uint32_t         img_height_px;//originally uint32_t
    uint16_t        clr_planes_no;
    const uint16_t  bpx = 24;//app only works on 24-bit depth bmps
    const uint32_t  compression = 0;//0 for un-compressed bmps ( will only work on uncompressed) 
    uint32_t        raw_data_sz;
-   int32_t         xppm;// ppm == pixles per meter
-   int32_t         yppm;
+   uint32_t         xppm;// ppm == pixles per meter
+   uint32_t         yppm;
    uint32_t        clrs_count;
    uint32_t        important_clrs;
 };
 
 #pragma pack(4)
-//DWORD alignment (32bit pxl sz) 
+//DWORD alignment (32bit pxl sz)
 //for more safty BGR sub struct is also 4 byte size
 struct Raw_data{
     std::vector <char> raw_array;

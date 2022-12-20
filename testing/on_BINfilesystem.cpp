@@ -9,6 +9,9 @@ using namespace std;
 // seekp() is equivalant to seekg() move pointer to specific location in file
 // tellg() is equivalant to tellp() requie current pointer location.
 // get location is diff than tellp() pointer
+// fopen is for 'C' and most of c file i/o is defined in 'stdio.h'
+//  ifstream is for 'C++' and defined in 'filesystem' dont forget that 
+
 int main() {
     filesystem :: path path;
     ofstream toFile;   // if file does not exist it makes new file!!

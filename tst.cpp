@@ -3,7 +3,14 @@ using namespace std;
 #define sys filesystem 
 #define pth sys::path
 int main() {
+
 // temp file : TEST ANY SNIPPITS HERE //
+
+// fopen is for 'C' and most of c file i/o is defined in 'stdio.h'
+//  ifstream is for 'C++' and defined in 'filesystem' dont forget that 
+
+
+
 
 
 // //GET FILE PATH relative and make it abs .
@@ -34,6 +41,15 @@ cout << dec;
 cout <<'\n' <<  raw.size() << endl << endl;
 if(from_file.is_open())
     from_file.close();
+
+//CHANGE WORD SIZE
+//refrence  from byte to DWORD(32bit)
+// UINT32 bigvar = (var1 << 24) + (var2 << 16) + (var3 << 8) + var4;
+int cntr = -1;
+uint16_t tst = (raw[++cntr] << 8) + raw[++cntr] ;
+cout <<"\n\n" << hex <<tst;
+
+
 
 //WRITE BINARY FROM VECTOR 
 // edit to make some of it black

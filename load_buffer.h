@@ -5,7 +5,7 @@
 #include <map>
 #include <vector>
 #include <filesystem>
-#include "init_bmp.hpp"
+#include "inout_bmp.hpp"
 
 using namespace std;
 // #define fs filesystem;
@@ -14,7 +14,6 @@ typedef unsigned char BYTE;
 class Load_buffer{
 
     static int obj_cnt ; // to empty the map later ( max 5 images 'last recent 5 images')
-    string bfrd_image_name ; // buffer_map key
     //no size var needed you can get it from the map value.size()
 
     pair<string, vector<BYTE>> load_buffer_func( filesystem :: path abs_file_path ="/"){
@@ -40,6 +39,7 @@ class Load_buffer{
 
     public:
         static map <string , vector <BYTE> > buffer_map;
+        string bfrd_image_name ; // buffer_map key better be const string 
 
         Load_buffer(  filesystem::path rel_file_path = "/" ) {
 

@@ -3,7 +3,7 @@ using namespace std;
 #include <bits/stdc++.h>
 #include "chroma.hpp"
 #include "app_enums.hpp"
-#include  "init_bmp.hpp"
+#include  "inout_bmp.hpp"
 
 Signals_app  app_start(void){
     //TODO : move all this to menues class
@@ -16,7 +16,12 @@ Signals_app  app_start(void){
         exit(EXIT_FAILURE);
     }
 
-    
+    cout << "__Operations Menu__:\n\n 1)simple_threshold_binarize \n 2)convert to Gray scale\n "\
+         << "3)Resize"  ;
+    cout << "\n choose your operations please : \n > "  ;
+    int op ;
+    cin >> op;
+
     cout << " ENTER: \n\n '1' to quit \n'0' to restart\n\n >  ";
     bool is_done;
     cin >> is_done;
@@ -25,6 +30,6 @@ Signals_app  app_start(void){
     return app_state;
 }
 
-// app_start() either in cli or gui 
+// TODO : app_start() either in cli or gui 
 
 
