@@ -31,6 +31,7 @@ Signals_app op_menu(){
         cout << "SAVE ERROR TERMINATING!\n\n";
         exit(EXIT_FAILURE);
     }
+    return Signals_app::APP_OK;
 }
 
 Signals_app  app_start(void){

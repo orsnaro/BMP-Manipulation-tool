@@ -14,7 +14,7 @@ typedef unsigned char BYTE;
 
 class Load_buffer{
 
-    static int obj_cnt ; // to empty the map later ( max 5 images 'last recent 5 images')
+     int obj_cnt ; // to empty the map later ( max 5 images 'last recent 5 images')
     //no size var needed you can get it from the map value.size()
 
     pair<string, vector<BYTE>> load_buffer_func( filesystem :: path abs_file_path ="/"){
@@ -23,10 +23,10 @@ class Load_buffer{
         //start actuall readin of image raw data
         ifstream read_img_obj(abs_file_path , ios::binary | ios::in);
         //get file size
-        read_img_obj.seekg(0,ios::end);
+        read_img_obj.seekg(0, ios::end);
         int file_sz = read_img_obj.tellg();
         read_img_obj.seekg(0,ios::beg);
-        vector <BYTE> tmp_vec(file_sz);
+        vector <BYTE> tmp_vec(file_sz + 1);
 
         //INPUT
         read_img_obj.read( (char*) &tmp_vec[0] , file_sz); //only  c_str arrays so cast DA VECOTR!
@@ -40,7 +40,7 @@ class Load_buffer{
 
     public:
 
-        static map <string , vector <BYTE> > buffer_map;
+         map <string , vector <BYTE> > buffer_map;
         string bfrd_image_name ; // buffer_map key better be const string 
 
         
@@ -67,8 +67,8 @@ class Load_buffer{
             //Done buffering !
 
         }
-        ~Load_buffer();
-};
+        // ~Load_buffer();
+} load_buffer_obj;
 
 
 

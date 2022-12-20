@@ -67,7 +67,7 @@ class Init_img { //can be inhirited to load diff image formats
                 return Signals_BMPstruct::OK_FILE_TYPE;
         }
 
-        static  filesystem::path image_path;
+          filesystem::path image_path;
 
          Signals_app load_img(){
             cout << "\nPLease Enter image path : \n > ";
@@ -127,6 +127,7 @@ Signals_app save_image(){
     abs_path /= new_img_pth;
 
     system(abs_path.string().c_str()); //to open edited image
+    return Signals_app::APP_OK;
 }
 //TODO: handle memory leak if user kept restarting app u must destruct those objcts
 
