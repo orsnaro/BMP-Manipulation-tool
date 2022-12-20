@@ -15,7 +15,7 @@ using namespace std;
 //TODO : init linikng to gui here ( my 1st cpp gui ever <3 )
 //TODO : for error handling all functions must return at least pair <T,T>  => func normal return + state signal 
 
-
+// class Init_img;
 
 
 
@@ -69,7 +69,7 @@ class Init_img { //can be inhirited to load diff image formats
 
         static  filesystem::path image_path;
 
-        static Signals_app load_img(){
+         Signals_app load_img(){
             cout << "\nPLease Enter image path : \n > ";
             cin >> image_path;
 
@@ -99,7 +99,8 @@ class Init_img { //can be inhirited to load diff image formats
 
 
     //TODO : DO constructor
-}init_img_obj;
+};
+ Init_img init_img_obj1;
 
 
           //----------------- GLOBAL FUNCTIONS SECTION -------------
@@ -129,4 +130,5 @@ Signals_app save_image(){
 }
 //TODO: handle memory leak if user kept restarting app u must destruct those objcts
 
+ Init_img *load_img_ptr = &init_img_obj1;
 

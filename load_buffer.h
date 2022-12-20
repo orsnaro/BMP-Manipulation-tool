@@ -39,18 +39,20 @@ class Load_buffer{
     }
 
     public:
+
         static map <string , vector <BYTE> > buffer_map;
         string bfrd_image_name ; // buffer_map key better be const string 
 
-        Load_buffer(  filesystem::path rel_file_path = "/" ) {
+        
 
+        Load_buffer(  filesystem::path rel_file_path = "/" ) {
             filesystem :: path tmp_abs_path = filesystem::current_path();
             tmp_abs_path /= rel_file_path;
 
             if( !tmp_abs_path.is_absolute()){
                 cout << "fetal warning : not valid path\n " \
                      << tmp_abs_path << "\n PLEASE RE-Import IMAGE\n\n";
-                init_img_obj.load_img();
+                     exit(EXIT_FAILURE);
             }
             
             obj_cnt ++;

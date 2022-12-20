@@ -6,8 +6,6 @@ using namespace std;
 #include  "inout_bmp.hpp"
 #include  "simple_img_manip.hpp"
 
-extern class Init_img {};
-
 Signals_app op_menu(){
    cout << "__Operations Menu__:\n\n 1)simple_threshold_binarize \n 2)convert to Gray scale\n "\
          << "3)Resize"  ;
@@ -40,7 +38,7 @@ Signals_app  app_start(void){
     system("clear");
     cout << "\n\n___________Welcome To BMP APP (prealpha v0.5)_____________\n\n";
 
-    Signals_app app_state = Init_img::load_img();
+    Signals_app app_state = load_img_ptr -> load_img();
     if(app_state == Signals_app::APP_ERROR){
         cerr << "FETAL ERROR TERMINATING";
         exit(EXIT_FAILURE);
