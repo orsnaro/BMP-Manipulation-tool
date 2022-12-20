@@ -50,7 +50,7 @@ class Load_buffer{
             if( !tmp_abs_path.is_absolute()){
                 cout << "fetal warning : not valid path\n " \
                      << tmp_abs_path << "\n PLEASE RE-Import IMAGE\n\n";
-                Init_img::load_img();
+                init_img_obj.load_img();
             }
             
             obj_cnt ++;

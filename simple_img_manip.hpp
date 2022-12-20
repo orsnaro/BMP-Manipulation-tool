@@ -1,3 +1,4 @@
+#pragma once
 #include <bits/stdc++.h>
 #include "inout_bmp.hpp"// struct objects it here temp (move later)
 using namespace std;

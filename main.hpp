@@ -6,6 +6,8 @@ using namespace std;
 #include  "inout_bmp.hpp"
 #include  "simple_img_manip.hpp"
 
+extern class Init_img {};
+
 Signals_app op_menu(){
    cout << "__Operations Menu__:\n\n 1)simple_threshold_binarize \n 2)convert to Gray scale\n "\
          << "3)Resize"  ;
