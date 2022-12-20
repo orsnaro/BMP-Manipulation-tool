@@ -46,10 +46,10 @@ class Load_buffer{
             filesystem :: path tmp_abs_path = filesystem::current_path();
             tmp_abs_path /= rel_file_path;
 
-            if( !tmp_abs_path.is_absolute() || !filesystem::exists(tmp_abs_path)){
-                cout << "fetal warning : not valid path or file\n " \
-                     << tmp_abs_path << "\n PLEASE RE-ENTER IMAGE\n\n";
-                Load_img::load_func();
+            if( !tmp_abs_path.is_absolute()){
+                cout << "fetal warning : not valid path\n " \
+                     << tmp_abs_path << "\n PLEASE RE-Import IMAGE\n\n";
+                Init_img::load_img();
             }
             
             obj_cnt ++;
@@ -59,6 +59,7 @@ class Load_buffer{
                 //TODO : make the buffer dumb to file and retrive the last recent 5 files data
             }
             pair<string , vector <BYTE>> raw_pair = load_buffer_func(tmp_abs_path);
+            bfrd_image_name = raw_pair.first;
             buffer_map[raw_pair.first] = raw_pair.second;
             //Done buffering !
 

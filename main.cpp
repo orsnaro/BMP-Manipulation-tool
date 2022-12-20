@@ -16,9 +16,7 @@ int main() {
 
     bool not_done = 1;
     while(not_done){
-
         not_done = bool(app_start());
-        
     }
 
     return 0;

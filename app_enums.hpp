@@ -5,6 +5,7 @@ typedef short int state_t;
           // --------------- ENUMS SECTION ----------------
 
 enum class Signals_BMPstruct : state_t {
+    
     //all valid states = 0 
     OK_FILE_TYPE, 
     VALID_OFFSET  = 0, 
@@ -22,16 +23,19 @@ enum class Signals_BMPstruct : state_t {
     INVALID_COMPRESSION,
     INVALID_BIT_DEPTH,
     INVALID_PADDING //if read wrong or paddings  not 0x00 valued
-};
+}signals_bmpstruct;
 
 enum class Signals_app : state_t {
     //all valid states = 0
+    APP_OK = 0,
     LOAD_OK= 0,
 
 
     // all invalid states != 0 and unique
+    DONT_QUIT = 1,
+    APP_ERROR,
     BAD_LOAD 
 
 
-};
+}signals_app;
 
