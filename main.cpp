@@ -1,10 +1,10 @@
 /************************************************************************************************************
 *                         		 d(Programmer): Omar Rashad salem                                     		*             
-*                                  		Date: 18/12/2022                                                    *    
+*                                  		Date: 23/12/2022                                                    *    
 *            info:                                                                                          *      
 *                    this is the static chroma .bmp Images project  console version (SCBMP.exe)             *
 *            version :                                                                                      *
-*                    pre_alpha_console_0.5                                                                  *
+*                    alpha_console_1.0                                                                  *
 *            type :                                                                                         *
 *                    college solo project for 3rd year CS engineering at ksu  -> Multimedia/dr.Heba course  *
 *                                 																			*
