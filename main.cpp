@@ -12,12 +12,8 @@
 *************************************************************************************************************/
 #include "main.hpp"
 int main() {
-
-    bool not_done = 1;
-    while(not_done){
-        not_done = bool(app_start());
-    }
-
+    bool not_done = true;
+    while(not_done) not_done = bool(app_start());
     return 0;
 }
 //TODO : seperate implementation to a ".cpp" file and leave the declarations in ".hpp"
