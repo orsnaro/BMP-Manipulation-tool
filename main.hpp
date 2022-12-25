@@ -48,7 +48,7 @@ Signals_app op_menu(){
 Signals_app  app_start(void){
     //TODO : move all this to menues class
     system("cls");
-    cout << "\n\n___________Welcome To BMP APP (alpha v1.0)_____________\n\n";
+    cout << "\n\n___________Welcome To BMP APP (Beat v1.5)_____________\n\n";
     Signals_app app_state = load_img_ptr -> load_img();
 
     if(app_state == Signals_app::APP_ERROR){
