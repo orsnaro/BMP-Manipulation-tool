@@ -1,6 +1,6 @@
 #pragma once
 #include <bits/stdc++.h>
-#include "inout_bmp.hpp"// struct objects it here temp (move later)
+#include "inout_bmp.h"// struct objects it here temp (move later)
 using namespace std;
 
 

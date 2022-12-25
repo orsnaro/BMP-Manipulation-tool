@@ -1,8 +1,8 @@
 #pragma once 
 #include <bits/stdc++.h>
-#include "app_enums.hpp"
+#include "app_enums.h"
 #include "load_buffer.h"
-#include "struct_bmp.hpp"
+#include "struct_bmp.h"
 using namespace std;
 //#include <filesytem> //in stdc++.h
 

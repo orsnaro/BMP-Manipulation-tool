@@ -3,7 +3,7 @@
 // KEYS : image name  VALUES :  vector <byte> vec
 
 #include <bits/stdc++.h>
-#include "inout_bmp.hpp"
+#include "inout_bmp.h"
 
 using namespace std;
 typedef unsigned char BYTE;
