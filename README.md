@@ -5,7 +5,7 @@
 > ### Bete version (v1.5) is out!
  * now can thershhold an image 
  * now can grayscale an image 
- * ~~ some bugs fixed ~~
+ * ~~some bugs fixed~~
 
 ![ alt text for screen readers](Bmp_chorma.ico "icon") 
 
