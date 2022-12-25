@@ -34,7 +34,7 @@
 *.app
 
 #outputed images
-*.bmp
-*.BMP
+#*.bmp
+#*.BMP
 
 #later exclude "testing/" and "assets/" after finishing the poj
