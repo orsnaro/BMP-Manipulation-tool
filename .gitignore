@@ -1,7 +1,9 @@
 # Prerequisites
+.git/
+.vscode/
 *.d
 
-# Compiled Object files
+# Compild Object files
 *.slo
 *.lo
 *.o
@@ -34,3 +36,5 @@
 #outputed images
 *.bmp
 *.BMP
+
+#later exclude "testing/" and "assets/" after finishing the poj
