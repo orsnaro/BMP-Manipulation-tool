@@ -294,7 +294,7 @@ Signals_app create_bmp_export( BMP_STRUCT &final_img , BMP_STRUCT &manip_img){//
             for(int i = 0; i < pxl_ar_sz; i++){
 
                  //padding
-                 int  pad_abs_adrs = pxl_ar_ofst + padd_indx ; // where is every next padding counted from base of file 0x00000000
+                //  int  pad_abs_adrs = pxl_ar_ofst + padd_indx ; // where is every next padding counted from base of file 0x00000000
                  if ( is_padded && i == padd_indx  ) {
 
                     int cntr = padding_no;
