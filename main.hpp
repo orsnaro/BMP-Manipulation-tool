@@ -9,7 +9,7 @@ using namespace std;
 
 Signals_app op_menu(){
    cout << "__Operations Menu__:\n\n 1) simple_threshold_binarize \n 2) convert to Gray scale\n "\
-         << "3) Resize"  ;
+         << "3) crop rows\n" << " 4) Just save\n" ;
     cout << "\n\nchoose your operations please : \n > "  ;
     int op ;
     cin >> op;
@@ -25,6 +25,8 @@ Signals_app op_menu(){
     else if (op == 3 )
         resize(); 
 
+    else if ( op == 4)
+        void (true);
     else{
         cout << "INVALID OPTION ..RETRY \n\n";
         op_menu();
@@ -62,9 +64,7 @@ Signals_app  app_start(void){
     bool is_done;
     cin >> is_done;
 
-    
-
-    is_done ?  app_state = Signals_app::APP_OK : app_state = Signals_app::DONT_QUIT;
+    is_done ?  app_state = Signals_app::QUIT : app_state = Signals_app::RELOAD_APP;
     return app_state;
 }
 

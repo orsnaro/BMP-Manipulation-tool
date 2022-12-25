@@ -11,7 +11,10 @@ typedef unsigned char BYTE;
 // 4) 24-bit main bmp struct has 3 sub structs -> Fileheader , Bmpspecs , Raw_data 
 
 
-#pragma pack(1)//one byte allignmenmt in memory i.e.(disable compiler's fast mem. access optimization feature)
+// #pragma pack(1)//one byte allignmenmt in memory i.e.(disable compiler's fast mem. access optimization feature)
+struct Raw_data{ std::vector <BYTE> raw_array; };
+
+#pragma pack(1)
 struct Fileheader {
     uint16_t         file_type_sign;
     uint32_t         tot_sz;
@@ -35,7 +38,6 @@ struct Bmpspecs {
 };
 
 #pragma pack(1)
-struct Raw_data{ std::vector <BYTE> raw_array; };
 
 struct BGR_pxl {//NOT USED FOR NOW
     //little indian of -> RGB colors
@@ -49,6 +51,7 @@ struct BGR_pxl {//NOT USED FOR NOW
 struct BMP_STRUCT{
     Fileheader fileheader;
     Bmpspecs bmpspecs;
+#pragma pack()
     Raw_data raw_data;
 };
     

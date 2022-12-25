@@ -36,11 +36,9 @@ class Init_img { //can be inhirited to load diff image formats
             Raw_data   *pxl_arr_ptr       = &bmp_import_instance.raw_data;
 
             //fill Fileheader
-            cout << "for test :" <<hex <<  tmp_vec[0] << tmp_vec[1] << ' '<<dec ; //for test
 
             //stores bigger than byte in little endian
             fil_hid_ptr -> file_type_sign = (tmp_vec[0]) | (tmp_vec[1] << 8);
-            cout << "for test :" << hex << fil_hid_ptr -> file_type_sign << dec;//for test
             fil_hid_ptr -> tot_sz         = (tmp_vec[2]) | (tmp_vec[3] << 8) | (tmp_vec[4] << 16) | (tmp_vec[5] << 24);
             fil_hid_ptr -> un_used        = (tmp_vec[6]) | (tmp_vec[7] << 8) | (tmp_vec[8] << 16) | (tmp_vec[9] << 24);
             
@@ -63,8 +61,9 @@ class Init_img { //can be inhirited to load diff image formats
             bool is_padded;
             int padding_no = int(tmp_width) % 4 ; 
             int first_padd_indx = tmp_width * 3; //(tmp_width * 3) is const  which equals 1st pad offset from each row begin
-            cout << "tmp_width: " << tmp_width << " in hex: " << hex << tmp_width << dec << endl ;//FOR TEST
-            cout << padding_no << endl ; //for test
+
+
+
             (tmp_width % 4) == 0  ? is_padded = false : is_padded = true ;
             (pxl_arr_ptr -> raw_array.empty()) ? void(true) /*do nothing */ : pxl_arr_ptr -> raw_array.clear();
             for(int i = 0; i < int(pxl_ar_sz); i++){ 
@@ -79,12 +78,6 @@ class Init_img { //can be inhirited to load diff image formats
                 pxl_arr_ptr  -> raw_array.push_back(one_pxl_ch);
             }
             
-            //FOR TEST BLOCK {
-            cout << "test if removed paddings and saved pxls right: "; //FOR TEST
-            for ( auto &x : pxl_arr_ptr -> raw_array ) // FOR TEST
-                cout << hex  << int(x) << dec; // FOR TEST
-            cout << endl;
-            //END TEST BLOCK }
 
             return Signals_app::LOAD_OK; 
         }
@@ -99,7 +92,6 @@ class Init_img { //can be inhirited to load diff image formats
 
                 uint16_t bmp_magic_sign = 0x4d42; // this equals char[2] = {BM}  //if wrong switch LSB with MSB
                 uint16_t *imported_magic_sign_ptr = &bmp_import_instance.fileheader.file_type_sign;
-                cout <<hex<< *imported_magic_sign_ptr << dec;//FOR TEST
 
                 bool is_real_bmp = (bmp_magic_sign ==  *imported_magic_sign_ptr );
 
@@ -252,13 +244,11 @@ Signals_app create_bmp_export( BMP_STRUCT &final_img , BMP_STRUCT &manip_img){//
 
              Fileheader *fil_hid_ptr   = &final_img.fileheader;
              Bmpspecs   *bmp_spec_ptr  = &final_img.bmpspecs;
-             Raw_data   *pxl_arr_ptr   = &final_img.raw_data;
+             Raw_data   *pxl_arr_ptr2   = &final_img.raw_data;
 
 
             //fill Fileheader
-            cout << "for test expo :" << hex << manip_img.fileheader.file_type_sign << ' ';//for test
             fil_hid_ptr -> file_type_sign  =  manip_img.fileheader.file_type_sign ;
-            cout << fil_hid_ptr -> file_type_sign << dec << endl; //for test
             fil_hid_ptr -> tot_sz          =  manip_img.fileheader.tot_sz;
             fil_hid_ptr -> un_used         =  manip_img.fileheader.un_used;
             fil_hid_ptr -> raw_data_offset =  manip_img.fileheader.raw_data_offset;
@@ -287,36 +277,42 @@ Signals_app create_bmp_export( BMP_STRUCT &final_img , BMP_STRUCT &manip_img){//
             bool is_padded;
 
             (tmp_width % 4) == 0  ? is_padded = false : is_padded = true ;
-            (pxl_arr_ptr -> raw_array.empty()) ? void(true)/*do nothing */ : pxl_arr_ptr -> raw_array.clear();
+            (pxl_arr_ptr2 -> raw_array.empty()) ? void(true)/*do nothing */ : pxl_arr_ptr2 -> raw_array.clear();
 
-            cout << "tmp_width: " << tmp_width << " in hex: " << hex << tmp_width << dec << endl ;//FOR TEST
-            cout << padding_no << endl;//for test
-            for(int i = 0; i < pxl_ar_sz; i++){
 
-                 //padding
-                //  int  pad_abs_adrs = pxl_ar_ofst + padd_indx ; // where is every next padding counted from base of file 0x00000000
-                 if ( is_padded && i == padd_indx  ) {
+            int cntr = 0;
+            pxl_arr_ptr2 ->raw_array = manip_img.raw_data.raw_array;
+            
+            for(int i = 0, j = 0 ; i < pxl_ar_sz; i++){
 
-                    int cntr = padding_no;
+                if ( is_padded && i == padd_indx){
+                    auto begin = pxl_arr_ptr2 -> raw_array.begin();
+                    pxl_arr_ptr2 -> raw_array.insert(begin + padd_indx , 2 , BYTE(0x00) );
                     padd_indx += (tmp_width * 3 + padding_no) ;
-
-                    while (cntr --) pxl_arr_ptr  -> raw_array.push_back(0x00); 
-  
-                    i += (padding_no - 1); 
-                }else{
-                    //pxls
-                    auto one_pxl_ch = manip_img.raw_data.raw_array[pxl_ar_ofst + i];
-                    pxl_arr_ptr  -> raw_array.push_back(one_pxl_ch);
-
                 }
+
+
+                //  //set padding next offset
+                // //  int  pad_abs_adrs = pxl_ar_ofst + padd_indx ; // where is every next padding counted from base of file 0x00000000
+                //  if ( is_padded && i == padd_indx  ) {
+                //     cntr = padding_no;
+                //     padd_indx += (tmp_width * 3 + padding_no) ;
+                //  }
+
+                // //padd time
+                // if ( cntr != 0){
+                //     pxl_arr_ptr2  -> raw_array.push_back(BYTE(0x00)); 
+                //     cntr--;
+                // }
+                // else{//pxl time
+
+                //     auto one_pxl_ch = manip_img.raw_data.raw_array[(pxl_ar_sz - 1) - j];
+                //     pxl_arr_ptr2  -> raw_array.push_back(one_pxl_ch);
+                //     j ++;
+                // }
                 
             }
 
-            //FOR TEST BLOCK {
-            cout << "tst final image pxl array : \n\n " ; //FOR TEST
-            for ( auto & x : pxl_arr_ptr -> raw_array ) //FOR TEST
-                cout << hex << int(x) << dec; //FOR TEST
-            // END FOR TEST BLOCK }
 
             return Signals_app::LOAD_OK; 
         }
@@ -334,12 +330,11 @@ Signals_app save_image(){
         filesystem::remove(new_img_pth);
 
     ofstream new_img_obj("edited_image.bmp" , ios::binary); //may use ios::trunc and delete prev if
-      cout <<endl << sizeof(bmp_export_instance.raw_data) <<' ' << bmp_export_instance.raw_data.raw_array.size() << endl; //for test
-      cout << sizeof(BYTE) ;
+      
     if( new_img_obj.is_open() && new_img_obj.good() ){
         new_img_obj.write( (char*) &bmp_export_instance.fileheader , sizeof(bmp_export_instance.fileheader) );
         new_img_obj.write( (char*) &bmp_export_instance.bmpspecs   , sizeof(bmp_export_instance.bmpspecs) );
-        new_img_obj.write( (char*) &bmp_export_instance.raw_data.raw_array[0] ,bmp_export_instance.raw_data.raw_array.size() );
+        new_img_obj.write( (char*) &bmp_export_instance.raw_data.raw_array[0] , bmp_export_instance.raw_data.raw_array.size() );
     }else{
         cout << "ERROR SAVING!\n\n";
         return Signals_app::SAVE_ERROR;

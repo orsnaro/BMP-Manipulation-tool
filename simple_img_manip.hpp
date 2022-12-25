@@ -22,10 +22,13 @@ void save_formated_arr( vector < vector<BYTE> > _to_save_arr){
     //TODO: loop to save the formatted again to imported struct to ready to export to final struct later
 }
 
-void resize(){ //actually it crops image
+void resize(){ //actually it crops image rows now only
 
     
     Bmpspecs *specs_ptr = &bmp_import_instance.bmpspecs;
+
+    cout << "Original Image shape(width , height) : " ;
+    cout << specs_ptr ->img_width_px <<','<<  specs_ptr -> img_height_px << endl << endl;
 
     cout << "input NEW WIDTH in pixels:\n > ";
     uint32_t n_width ;
@@ -34,18 +37,18 @@ void resize(){ //actually it crops image
     uint32_t n_height;
     cin >> n_height;
 
-    if( n_height > specs_ptr -> img_height_px){
+    if( n_height > (specs_ptr -> img_height_px) or n_height == 0){
         cout << "INVALID HEGIHT.. RENTER SIZE\n\n";
         resize();
-    }
-    if( n_width > specs_ptr -> img_height_px){
+    }else if( n_width > (specs_ptr -> img_width_px) or n_width == 0){
         cout << "INVALID WIDTH.. RENTER SIZE\n\n";
         resize();
+    }else if ( n_width <= (specs_ptr -> img_width_px) && n_height <= (specs_ptr -> img_height_px) ){
+        specs_ptr -> img_height_px = n_height;
+        specs_ptr -> img_width_px  = n_width;
+        cout << "IMAGE RESIZED!\n\n";
     }
 
-    specs_ptr -> img_height_px = n_height;
-    specs_ptr -> img_width_px  = n_width;
-    cout << "IMAGE RESIZED!\n\n";
     //TODO : delete extra garpge data at end 
 
     return;
