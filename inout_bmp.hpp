@@ -290,26 +290,6 @@ Signals_app create_bmp_export( BMP_STRUCT &final_img , BMP_STRUCT &manip_img){//
                     pxl_arr_ptr2 -> raw_array.insert(begin + padd_indx , 2 , BYTE(0x00) );
                     padd_indx += (tmp_width * 3 + padding_no) ;
                 }
-
-
-                //  //set padding next offset
-                // //  int  pad_abs_adrs = pxl_ar_ofst + padd_indx ; // where is every next padding counted from base of file 0x00000000
-                //  if ( is_padded && i == padd_indx  ) {
-                //     cntr = padding_no;
-                //     padd_indx += (tmp_width * 3 + padding_no) ;
-                //  }
-
-                // //padd time
-                // if ( cntr != 0){
-                //     pxl_arr_ptr2  -> raw_array.push_back(BYTE(0x00)); 
-                //     cntr--;
-                // }
-                // else{//pxl time
-
-                //     auto one_pxl_ch = manip_img.raw_data.raw_array[(pxl_ar_sz - 1) - j];
-                //     pxl_arr_ptr2  -> raw_array.push_back(one_pxl_ch);
-                //     j ++;
-                // }
                 
             }
 
