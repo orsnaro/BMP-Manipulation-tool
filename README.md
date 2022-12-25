@@ -14,7 +14,7 @@
 
 
 
-> #### Refrences! : 
+> #### References! : 
   
 1. [learn the  bmp](https://www.drdobbs.com/architecture-and-design/the-bmp-file-format-part-1/184409517)
 2. [24-bit BMP Structure](https://upload.wikimedia.org/wikipedia/commons/7/75/BMPfileFormat.svg)
