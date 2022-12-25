@@ -12,6 +12,7 @@ typedef unsigned char BYTE;
 
 
 #pragma pack(1)//one byte allignmenmt in memory i.e.(disable compiler's fast mem. access optimization feature)
+
 struct Fileheader {
     uint16_t         file_type_sign;
     uint32_t         tot_sz;
@@ -33,9 +34,7 @@ struct Bmpspecs {
     uint32_t        clrs_count;
     uint32_t        important_clrs;
 };
-
-#pragma pack(1)
-struct Raw_data{ std::vector <BYTE> raw_array; };
+struct Raw_data{ std::vector <BYTE> raw_array; }; // try char array later
 
 struct BGR_pxl {//NOT USED FOR NOW
     //little indian of -> RGB colors
@@ -49,6 +48,6 @@ struct BGR_pxl {//NOT USED FOR NOW
 struct BMP_STRUCT{
     Fileheader fileheader;
     Bmpspecs bmpspecs;
-    Raw_data raw_data;
+    Raw_data raw_data; 
 };
     

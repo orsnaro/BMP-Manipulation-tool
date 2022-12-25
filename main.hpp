@@ -9,22 +9,22 @@ using namespace std;
 
 Signals_app op_menu(){
    cout << "__Operations Menu__:\n\n 1) simple_threshold_binarize \n 2) convert to Gray scale\n "\
-         << "3) Resize"  ;
+         << "3) crop rows\n" << " 4) Just save\n" ;
     cout << "\n\nchoose your operations please : \n > "  ;
     int op ;
     cin >> op;
 
     if ( op == 1)
-    cout << "SOON";
-        // simple_thresh_binary();
+        simple_threshold_binary();
 
     else if ( op == 2)
-        cout << "SOON";
-        //weighted_grayscale();
+        weighted_grayscale();
 
     else if (op == 3 )
         resize(); 
 
+    else if ( op == 4)
+        void (true);
     else{
         cout << "INVALID OPTION ..RETRY \n\n";
         op_menu();
@@ -47,8 +47,8 @@ Signals_app op_menu(){
 
 Signals_app  app_start(void){
     //TODO : move all this to menues class
-    // system("cls");
-    cout << "\n\n___________Welcome To BMP APP (prealpha v0.5)_____________\n\n";
+    system("cls");
+    cout << "\n\n___________Welcome To BMP APP (Beta  v1.5)_____________\n\n";
     Signals_app app_state = load_img_ptr -> load_img();
 
     if(app_state == Signals_app::APP_ERROR){
@@ -62,9 +62,7 @@ Signals_app  app_start(void){
     bool is_done;
     cin >> is_done;
 
-    
-
-    is_done ?  app_state = Signals_app::APP_OK : app_state = Signals_app::DONT_QUIT;
+    is_done ?  app_state = Signals_app::QUIT : app_state = Signals_app::RELOAD_APP;
     return app_state;
 }
 
