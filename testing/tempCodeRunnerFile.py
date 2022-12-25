@@ -1,5 +1,0 @@
-("tst1" , blc3)
-# cv2.imshow("tst2" , rgb4)
-# cv2.imshow("tst3" , rgb5)
-# cv2.imshow("tst4" , blc6)
-# cv2.imshow("tst5" , rgb6)
