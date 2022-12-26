@@ -2,7 +2,7 @@
 
 ##### This project is made without any libraries except the STD C++17 libs , yes it was a journey!  from learning to deal with hex dump and .bin files to image processing and then gui using QT(soon)  + making the new feature of static chroma replace isha (soon)💙.
 
-> ### Bete version (v1.5) is out!
+> ### Beta version (v1.5) is out!
  * now can thershhold an image 
  * now can grayscale an image 
  * ~~some bugs fixed~~
@@ -25,4 +25,4 @@
 
 
 
-<sub>At full release this repo will be a mini-gui-application on (file streaming in cpp  + image manipulation)  , Note : I know it's much easier in python. but I need it in   its  for mainly educational purposes . </sub> 
+<sub>At full release this repo will be a mini-gui-application on (file streaming in cpp  + image manipulation)  , Note : I know it's much easier in e.g.(python). but I need it.   its  for mainly educational purposes . </sub> 
