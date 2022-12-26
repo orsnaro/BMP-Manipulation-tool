@@ -15,10 +15,26 @@
 </br>
 </br>
 
+> ### Issues &  Notes:
 
+* if lib *`"filesystem"`* produces error please try newer cpp compiler version or replace it with [ghc/filesystem](https://github.com/gulrak/filesystem/releases) and replace all instances to *`ghc::filesystem`*
+  - <sub> this happends due to *stdc++* not supporting this lib for versions older than *C++17* _as far as i know_ </sub>
+  * <sub> replacing with `ghc/filesystem` is straight forward download -> `#include "abs-path-to-filesystem.h"` </sub>
 
+* Due to some Dependency/dynamic linking issues i provided a static linked .exe  to use. This will work almost for all platforms
+  - [cross_platform_bmp_betav1.5.exe](https://github.com/orsnaro/Static_chroma_bmp/blob/master/cross_platform_bmp_betav1.5.exe)
+  * <sub> to produce it when compiling my source code use command `g++ main.cpp -o chorma_proj.exe -static-libstdc++` </sub>
 
-> #### References📄: 
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+> ##### References📄: 
   
 1. [learn the  bmp](https://www.drdobbs.com/architecture-and-design/the-bmp-file-format-part-1/184409517)
 2. [24-bit BMP Structure](https://upload.wikimedia.org/wikipedia/commons/7/75/BMPfileFormat.svg)
