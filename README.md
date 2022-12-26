@@ -13,8 +13,8 @@
 > ### 🛠 Issues &  Notes:
 
 * if using lib *`"filesystem"`* produces errors please try newer cpp compiler version or replace it with [ghc/filesystem](https://github.com/gulrak/filesystem/releases) and replace all instances to *`ghc::filesystem`*
-  - <sub>  _as far as i know_ : this happends due to *stdc++* not supporting this lib for versions older than *C++17*. </sub>
-  * <sub> replacing with `ghc/filesystem` is straight forward download -> `#include "abs-path-to-filesystem.h"` . </sub>
+  - <sub>  _**as far as i know**_ : this happends due to *stdc++* not supporting this lib for versions older than *C++17*. </sub>
+  * <sub> replacing with `ghc/filesystem` is straight forward :  **download -> then -> `#include "abs-path-to-ghc/filesystem.h"`** . </sub>
 
 * Due to some Dependency/dynamic linking issues i provided a static linked .exe  to use. This will work almost for all platforms
   - [cross_platform_bmp_betav1.5.exe](https://github.com/orsnaro/Static_chroma_bmp/blob/master/cross_platform_bmp_betav1.5.exe) .
