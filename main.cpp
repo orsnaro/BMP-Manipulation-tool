@@ -10,7 +10,7 @@
 *                                 																			*
 *                           	   ~All Rights Reserved 2022/2023 ©~										*
 *************************************************************************************************************/
-#include "main.hpp"
+#include "headers/main.hpp"
 int main() {
     bool done = false;
     while(! done) done = bool(app_start());

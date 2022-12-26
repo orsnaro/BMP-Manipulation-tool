@@ -1,10 +1,10 @@
 #pragma once 
 using namespace std;
 #include <bits/stdc++.h>
-#include "chroma.hpp"
-#include "app_enums.hpp"
-#include  "inout_bmp.hpp"
-#include  "simple_img_manip.hpp"
+#include "headers/chroma.hpp"
+#include "headers/app_enums.hpp"
+#include  "headers/inout_bmp.hpp"
+#include  "headers/simple_img_manip.hpp"
 
 
 Signals_app op_menu(){
