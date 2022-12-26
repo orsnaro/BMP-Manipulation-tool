@@ -17,7 +17,7 @@
 
 > ### Issues &  Notes:
 
-* if lib *`"filesystem"`* produces error please try newer cpp compiler version or replace it with [ghc/filesystem](https://github.com/gulrak/filesystem/releases) and replace all instances to *`ghc::filesystem`*
+* if using lib *`"filesystem"`* produces errors please try newer cpp compiler version or replace it with [ghc/filesystem](https://github.com/gulrak/filesystem/releases) and replace all instances to *`ghc::filesystem`*
   - <sub> this happends due to *stdc++* not supporting this lib for versions older than *C++17* _as far as i know_ </sub>
   * <sub> replacing with `ghc/filesystem` is straight forward download -> `#include "abs-path-to-filesystem.h"` </sub>
 
