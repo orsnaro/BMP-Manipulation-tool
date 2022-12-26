@@ -19,4 +19,5 @@ int main() {
 //TODO : seperate implementation to a ".cpp" file and leave the declarations in ".hpp"
 //TODO : for error handling all functions must return at least pair <T,T>  => func normal return , state signal 
 //TODO : test seperatly  the background detection code on very abstract object then amp it up ( try 3 models abstract / mincraft / real photo )
-//TODO : REFACTOR REFACTOR REFACTOR , OPTIMIZE OPTIMIZE OPTIMIZE!assets/4x4red.bmp
+//TODO : make the program flow chart ( signals between functions)
+//TODO : REFACTOR REFACTOR REFACTOR , OPTIMIZE OPTIMIZE OPTIMIZE!
