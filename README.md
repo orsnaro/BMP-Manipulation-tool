@@ -26,6 +26,7 @@
 4. [#Pragma Pack() world](https://learn.microsoft.com/en-us/cpp/preprocessor/pack?view=msvc-170)
 5. [Binary file stream C++](https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-2.html)
 6. [more RAWS!](https://cplusplus.com/articles/DzywvCM9/)
+7. [On Image processing](https://web.stanford.edu/class/ee368/handouts.html)
 
 
 
