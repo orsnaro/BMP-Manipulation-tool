@@ -7,7 +7,6 @@
  * now can grayscale an image 
  * ~~some bugs fixed~~
 
-![ alt text for screen readers](assets/Bmp_chorma.png "icon") 
 </br>
 </br>
 > ### 🛠 Issues &  Notes:
