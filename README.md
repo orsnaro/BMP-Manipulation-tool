@@ -8,13 +8,8 @@
  * ~~some bugs fixed~~
 
 ![ alt text for screen readers](assets/Bmp_chorma.png "icon") 
-
-
 </br>
 </br>
-</br>
-</br>
-
 > ### Issues &  Notes:
 
 * if using lib *`"filesystem"`* produces errors please try newer cpp compiler version or replace it with [ghc/filesystem](https://github.com/gulrak/filesystem/releases) and replace all instances to *`ghc::filesystem`*
