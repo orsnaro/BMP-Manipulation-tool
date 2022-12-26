@@ -30,4 +30,4 @@
 
 
 
-<sub>At full release this repo will be a mini-gui-application on (file streaming in cpp  + image manipulation)  , Note : I know it's much easier in e.g.(python). but I need it.   its  for mainly educational purposes . </sub> 
+<sub>At full release this repo will be a mini-gui-application on (file streaming in cpp  + image manipulation)  , Note : I know it's much easier in e.g.(python). but I need it.   its  for mainly educational purposes . [Compiler used for __beta v1.5__ : gcc version 12.1.0 (MinGW-W64 x86_64-ucrt-posix-seh]</sub> 
