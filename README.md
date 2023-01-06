@@ -1,7 +1,7 @@
 # __24-bit Bmp File Manipulation Project__ 
 
 ##### This project is made without any libraries except the STD C++17 libs , yes it was a journey!  from learning to deal with hex dump and .bin files to image processing and then gui using QT(soon)💙.
-
+---
 > ### 📣 Beta (v1.5) is out!
  * now can thershhold an image 
  * now can grayscale an image 
@@ -11,7 +11,7 @@
 
 </br>
 </br>
-
+---
 > ###  🛠 Issues &  Notes:
 
 * if using lib *`"filesystem"`* produces errors please try newer cpp compiler version or replace it with [ghc/filesystem](https://github.com/gulrak/filesystem/releases) and replace all instances to *`ghc::filesystem`*
@@ -30,7 +30,7 @@
 </br>
 </br>
 </br>
-
+---
 > ##### 🧾 References: 
   
 1. [learn the  bmp](https://www.drdobbs.com/architecture-and-design/the-bmp-file-format-part-1/184409517)
