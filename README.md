@@ -1,6 +1,8 @@
 # __24-bit Bmp File Manipulation Project__ 
 
 ##### This project is made without any libraries except the STD C++17 libs , yes it was a journey!  from learning to deal with hex dump and .bin files to image processing and then gui using QT(soon)💙.
+
+
 ---
 
 > ### 📣 Beta (v1.5) is out!
@@ -12,7 +14,10 @@
 
 </br>
 </br>
+
+
 ---
+
 
 > ###  🛠 Issues &  Notes:
 
@@ -32,7 +37,10 @@
 </br>
 </br>
 </br>
+
+
 ---
+
 
 > ##### 🧾 References: 
   
