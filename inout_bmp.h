@@ -37,6 +37,7 @@ class Init_img { //can be inhirited to load diff image formats
 
             //fill Fileheader
 
+            //TODO : check how system extends your unsigned data (it deals with most data in 2's complement thus it might extend unsigned with ones assuming it's a 2's complement -ve number which leads to UB)
             //stores bigger than byte in little endian
             fil_hid_ptr -> file_type_sign = (tmp_vec[0]) | (tmp_vec[1] << 8);
             fil_hid_ptr -> tot_sz         = (tmp_vec[2]) | (tmp_vec[3] << 8) | (tmp_vec[4] << 16) | (tmp_vec[5] << 24);
@@ -211,7 +212,7 @@ void clear_exported_struct( BMP_STRUCT &exported){
 }
 
 uint16_t cvt_endians_u16(uint16_t before){//also works vice versa
-
+    //TODO : check how system extends your unsigned data (it deals with most data in 2's complement thus it might extend unsigned with ones assuming it's a 2's complement -ve number which leads to UB)
     BYTE bytes[2] = {0 , 0};
     uint16_t converted_u16 = 0;
 
@@ -223,7 +224,7 @@ uint16_t cvt_endians_u16(uint16_t before){//also works vice versa
     return converted_u16;
 };
 uint32_t cvt_endians_u32(uint32_t before){ //also works vice versa
-
+    //TODO : check how system extends your unsigned data (it deals with most data in 2's complement thus it might extend unsigned with ones assuming it's a 2's complement -ve number which leads to UB)
     BYTE bytes[4] = {0,0,0,0};
     uint32_t converted_u32 = 0;
 
@@ -240,7 +241,7 @@ uint32_t cvt_endians_u32(uint32_t before){ //also works vice versa
 Signals_app create_bmp_export( BMP_STRUCT &final_img , BMP_STRUCT &manip_img){//TODO : refactor create_bmp_export later to smaller funcs
             //this function converts all to little indian before writing to memory using save_image()
             //this function also adds padding to img widths that  aren't multiples of 4
-            
+            //TODO : check how system extends your unsigned data (it deals with most data in 2's complement thus it might extend unsigned with ones assuming it's a 2's complement -ve number which leads to UB)        
 
              Fileheader *fil_hid_ptr   = &final_img.fileheader;
              Bmpspecs   *bmp_spec_ptr  = &final_img.bmpspecs;

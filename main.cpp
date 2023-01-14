@@ -21,3 +21,4 @@ int main() {
 //TODO : test seperatly  the background detection code on very abstract object then amp it up ( try 3 models abstract / mincraft / real photo )
 //TODO : make the program flow chart ( signals between functions)
 //TODO : REFACTOR REFACTOR REFACTOR , OPTIMIZE OPTIMIZE OPTIMIZE!
+//TODO : check how system extends your unsigned data (it deals with most data in 2's complement thus it might extend unsigned with ones assuming it's a 2's complement -ve number which leads to UB)
