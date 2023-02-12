@@ -22,3 +22,4 @@ int main() {
 //TODO : make the program flow chart ( signals between functions)
 //TODO : REFACTOR REFACTOR REFACTOR , OPTIMIZE OPTIMIZE OPTIMIZE!
 //TODO : check how system extends your unsigned data (it deals with most data in 2's complement thus it might extend unsigned with ones assuming it's a 2's complement -ve number which leads to UB)
+//TODO : replace bits/stdc++.g library in main.h file for protability reaasons . ( some compilers and C++ versions doesnt have it)

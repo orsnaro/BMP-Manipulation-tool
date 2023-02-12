@@ -1,10 +1,10 @@
 #pragma once 
 using namespace std;
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> //TODO : replace it later  for protability reaasons . ( some compilers and C++ versions doesnt have it)
 #include "chroma.h"
 #include "app_enums.h"
-#include  "inout_bmp.h"
-#include  "simple_img_manip.h"
+#include "inout_bmp.h"
+#include "simple_img_manip.h"
 
 
 Signals_app op_menu(){
