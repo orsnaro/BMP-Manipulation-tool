@@ -27,7 +27,7 @@
 
 * Due to some Dependency/dynamic linking issues i provided a static linked .exe  to use. This will work almost for all platforms
   - [cross_platform_bmp_betav1.5.exe](https://github.com/orsnaro/Static_chroma_bmp/blob/master/cross_platform_bmp_betav1.5.exe) .
-  * <sub> to produce it when compiling my source code use command `g++ main.cpp -o chorma_proj.exe -static-libstdc++` .</sub>
+  * <sub> to produce it when compiling my source code using `GCC` compiler type command `g++ main.cpp -o chorma_proj.exe -static-libstdc++` .</sub>
 
 </br>
 </br>
