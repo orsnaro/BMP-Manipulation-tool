@@ -1,4 +1,5 @@
-# __24-bit Bmp File Manipulation Project__ 
+# __24-bit Bmp File Manipulation Project__  ![version badge](https://img.shields.io/badge/V1.5B-green?logo=github)
+
 
 ##### This project is made without any libraries except the STD C++17 libs , yes it was a journey!  from learning to deal with hex dump and .bin files to image processing and then gui using QT(soon)💙.
 
